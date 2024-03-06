@@ -1,0 +1,5 @@
+[Regular Show]
+Mordecai,120,90,110,Ataque Crítico,/GUI/Assets/mordecai-yellow.png;
+Rigby,80,82,94,Curación,/GUI/Assets/mordecai-yellow.png;
+
+[Avatar]
