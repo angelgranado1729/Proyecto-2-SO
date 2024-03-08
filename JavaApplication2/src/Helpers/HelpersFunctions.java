@@ -5,6 +5,7 @@
 package Helpers;
 
 import FileFunctions.FileFunctions;
+import MainClasses.IAArena;
 import MainClasses.TelevisionShow;
 import MainPackage.App;
 import java.util.concurrent.Semaphore;
@@ -30,9 +31,13 @@ public class HelpersFunctions {
                 fileFunctions.getYellowAvatar(), 
                 fileFunctions.getGreenAvatar(), 
                 fileFunctions.getRedAvatar());
-
+        
         app.setRegularShow(regularShow);
         app.setAvatarShow(avatarShow);
-        app.getAvatarShow().printAvailableCharacters();
+        
+        IAArena iaArena = new IAArena();
+        iaArena.setAvatarFighter(app.getAvatarShow().getGreenAvailable()[22]);
+        iaArena.setRegularShowFighter(app.getRegularShow().getGreenAvailable()[24]);
+        app.setIaArena(iaArena);
     }
 }

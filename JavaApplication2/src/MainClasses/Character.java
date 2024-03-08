@@ -29,7 +29,6 @@ public class Character extends Thread {
         this.agility = agility;
         this.urlSource = urlSource;
         this.hability = hability;
-        this.priorityLevel = this.checkPriority();
     }
     
     @Override
@@ -46,64 +45,137 @@ public class Character extends Thread {
         }
     }
 
-    
-   private int calculatePoints(int value, int[] thresholds, int[] points) {
-        for (int i = 0; i < thresholds.length; i++) {
-            if (value < thresholds[i]) {
-                return points[i];
-            }
-        }
-        return points[points.length - 1];
-    }
-
-    private int checkPriority() {
-        int[] hpThresholds = {30, 60, 90, Integer.MAX_VALUE};
-        int[] speedAgilityThresholds = {25, 50, 75, Integer.MAX_VALUE};
-        int[] points = {1, 2, 3, 4};
-
-        int qualityPoints = 0;
-        
-        // Usando el método helper para calcular puntos para HP, PV (speedVelocity) y AG (agility)
-        qualityPoints += calculatePoints(this.hitPoints, hpThresholds, points);
-        qualityPoints += calculatePoints(this.speedVelocity, speedAgilityThresholds, points);
-        qualityPoints += calculatePoints(this.agility, speedAgilityThresholds, points);
-        
-        switch (this.hability) {
-            case "Parálisis":
-            case "Congelamiento":
-                qualityPoints += 2;
-                break;
-            case "Curación":
-            case "Aumento de Agilidad":
-                qualityPoints += 3;
-                break;
-            case "Ataque crítico":
-            case "Aumento de Velocidad":
-                qualityPoints += 4;
-                break;
-        }
-        
-        if (qualityPoints >= 5 && qualityPoints <= 8) {
-            return 3;
-        } else if (qualityPoints >= 9 && qualityPoints <= 12) {
-            return 2;
-        } else if (qualityPoints >= 13 && qualityPoints <= 16) {
-            return 1;
-        }
-        
-        return qualityPoints;
-    }
-    
     public String toString() {
         return "Character{" +
-                "chapterId=" + chapterId +
-                ", hitPoints=" + hitPoints +
-                ", speedVelocity=" + speedVelocity +
-                ", agility=" + agility +
-                ", hability='" + hability + '\'' +
-                ", priorityLevel=" + priorityLevel +
-                ", urlSource='" + urlSource + '\'' +
+                "chapterId=" + getChapterId() +
+                ", hitPoints=" + getHitPoints() +
+                ", speedVelocity=" + getSpeedVelocity() +
+                ", agility=" + getAgility() +
+                ", hability='" + getHability() + '\'' +
+                ", priorityLevel=" + getPriorityLevel() +
+                ", urlSource='" + getUrlSource() + '\'' +
                 '}';
     }
+    
+    public void takeDamage(int damage) {
+    // Reducir los hitPoints en la mitad del daño recibido
+        this.hitPoints -= (damage / 2);
+
+        // Asegurarse de que los hitPoints no caigan bajo cero
+        if (this.hitPoints < 0) {
+            this.hitPoints = 0;
+        }
+    }
+    
+    public void heal(int healthPoints) {
+        // Incrementar los hitPoints en la cantidad especificada
+        this.hitPoints += healthPoints;
+   
+        int maxHP = 160;
+        if (this.hitPoints > maxHP) {
+            this.hitPoints = maxHP;
+    }
+}
+
+
+    /**
+     * @return the chapterId
+     */
+    public int getChapterId() {
+        return chapterId;
+    }
+
+    /**
+     * @param chapterId the chapterId to set
+     */
+    public void setChapterId(int chapterId) {
+        this.chapterId = chapterId;
+    }
+
+    /**
+     * @return the hitPoints
+     */
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    /**
+     * @param hitPoints the hitPoints to set
+     */
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    /**
+     * @return the speedVelocity
+     */
+    public int getSpeedVelocity() {
+        return speedVelocity;
+    }
+
+    /**
+     * @param speedVelocity the speedVelocity to set
+     */
+    public void setSpeedVelocity(int speedVelocity) {
+        this.speedVelocity = speedVelocity;
+    }
+
+    /**
+     * @return the agility
+     */
+    public int getAgility() {
+        return agility;
+    }
+
+    /**
+     * @param agility the agility to set
+     */
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    /**
+     * @return the hability
+     */
+    public String getHability() {
+        return hability;
+    }
+
+    /**
+     * @param hability the hability to set
+     */
+    public void setHability(String hability) {
+        this.hability = hability;
+    }
+
+    /**
+     * @return the priorityLevel
+     */
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    /**
+     * @param priorityLevel the priorityLevel to set
+     */
+    public void setPriorityLevel(int priorityLevel) {
+        this.priorityLevel = priorityLevel;
+    }
+
+    /**
+     * @return the urlSource
+     */
+    public String getUrlSource() {
+        return urlSource;
+    }
+
+    /**
+     * @param urlSource the urlSource to set
+     */
+    public void setUrlSource(String urlSource) {
+        this.urlSource = urlSource;
+    }
+    
+    
     
 }

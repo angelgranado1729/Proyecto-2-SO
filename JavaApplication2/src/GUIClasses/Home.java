@@ -5,8 +5,10 @@
 package GUIClasses;
 
 import Helpers.ImageUtils;
+import MainPackage.App;
 import java.util.HashSet;
 import javax.swing.ImageIcon;
+import javax.swing.JSlider;
 
 
 /**
@@ -16,6 +18,7 @@ import javax.swing.ImageIcon;
 public class Home extends javax.swing.JFrame {
 
     private ImageUtils imageUtils = new ImageUtils();
+    App app = App.getInstance();
 
     /**
      * Creates new form Home
@@ -35,9 +38,22 @@ public class Home extends javax.swing.JFrame {
         this.nickelodeonLogo.setIcon(nickelodeonLogo);
         this.cartoonNetworkLogo.setIcon(cartoonNetworkLogo);
         this.regularShowLogo.setIcon(regularShowLogo);
-        this.RegularShowCard.setIcon(imgIcon3);
+        
+        // Se setean las imagenes que la lucha en la IA.
+        ImageIcon regularShowCardIA=  imageUtils.loadScaledImage(app.getIaArena().getRegularShowFighter().getUrlSource(), 150, 200);
+        this.RegularShowCard.setIcon(regularShowCardIA);
+       
+        ImageIcon avatarCardIA=  imageUtils.loadScaledImage(app.getIaArena().getAvatarFighter().getUrlSource(), 150, 200);
+        this.AvatarCard.setIcon(avatarCardIA);
+        
+        // Se configura el slider 
+        jSlider1.setMinimum(300); 
+        jSlider1.setMaximum(5000);
+        jSlider1.setValue(app.getIaArena().getCombatSpeed());
+        
+        
+      
         this.fightingSquare.setIcon(imgIcon2);
-        this.AvatarCard.setIcon(imgIcon);
         this.jLabel1.setIcon(imgIcon4);
         this.jLabel2.setIcon(imgIcon4);
         this.jLabel3.setIcon(imgIcon4);
@@ -119,6 +135,10 @@ public class Home extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         cartoonNetworkLogo = new javax.swing.JLabel();
         nickelodeonLogo = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -128,6 +148,20 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(240, 233, 223));
         jPanel1.setMinimumSize(new java.awt.Dimension(1130, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSlider1.setMaximum(5000);
+        jSlider1.setMinimum(300);
+        jSlider1.setValue(3333);
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
+        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSlider1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
         AvatarCharacterID.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -143,12 +177,12 @@ public class Home extends javax.swing.JFrame {
         AvatarActualHP.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         AvatarActualHP.setForeground(new java.awt.Color(255, 255, 255));
         AvatarActualHP.setText("HP actual:");
-        jPanel1.add(AvatarActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, -1, -1));
+        jPanel1.add(AvatarActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
 
         RegularShowActualHP.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         RegularShowActualHP.setForeground(new java.awt.Color(255, 255, 255));
         RegularShowActualHP.setText("HP actual:");
-        jPanel1.add(RegularShowActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, -1, -1));
+        jPanel1.add(RegularShowActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
 
         Winner.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         Winner.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,12 +192,12 @@ public class Home extends javax.swing.JFrame {
         RegularShowActualStatus.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         RegularShowActualStatus.setForeground(new java.awt.Color(255, 255, 255));
         RegularShowActualStatus.setText("Estado actual:");
-        jPanel1.add(RegularShowActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, -1, -1));
+        jPanel1.add(RegularShowActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 540, -1, -1));
 
         AvatarActualStatus.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         AvatarActualStatus.setForeground(new java.awt.Color(255, 255, 255));
         AvatarActualStatus.setText("Estado actual:");
-        jPanel1.add(AvatarActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 570, -1, -1));
+        jPanel1.add(AvatarActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
 
         RegularShowLowPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         RegularShowLowPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
@@ -177,7 +211,7 @@ public class Home extends javax.swing.JFrame {
 
         regularShowLogo.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         regularShowLogo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(regularShowLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+        jPanel1.add(regularShowLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 30, 30));
         jPanel1.add(RegularShowCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
         jPanel1.add(AvatarCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
@@ -290,6 +324,18 @@ public class Home extends javax.swing.JFrame {
         nickelodeonLogo.setText("a..");
         jPanel1.add(nickelodeonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
+        jLabel21.setText("jLabel21");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
+
+        jLabel22.setText("jLabel21");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, -1, -1));
+
+        jLabel23.setText("jLabel21");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
+
+        jLabel24.setText("jLabel21");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,9 +350,17 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cartoonPlayMusic(String path) {
-        
-    }
+    private void jSlider1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSlider1MouseClicked
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        // TODO add your handling code here:
+        int newSpeed = jSlider1.getValue();
+        app.getIaArena().setCombatSpeed(newSpeed);
+    }//GEN-LAST:event_jSlider1StateChanged
+
+    
     /**
      * @param args the command line arguments
      */
@@ -378,6 +432,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

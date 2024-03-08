@@ -7,6 +7,7 @@ package MainPackage;
 import FileFunctions.FileFunctions;
 import GUIClasses.Home;
 import Helpers.HelpersFunctions;
+import MainClasses.IAArena;
 import MainClasses.TelevisionShow;
 import java.io.File;
 
@@ -26,6 +27,7 @@ public class App {
     // General variables
     private TelevisionShow regularShow; 
     private TelevisionShow avatarShow; 
+    private IAArena iaArena; 
 
 
     private static App app;
@@ -48,6 +50,7 @@ public class App {
         // Inicia la simulacion
         Home home = new Home();
         home.setVisible(true);
+        app.getIaArena().prepareFight();
     }
 
     /**
@@ -148,6 +151,21 @@ public class App {
         this.avatarShow = avatarShow;
     }
 
+    /**
+     * @return the iaArena
+     */
+    public IAArena getIaArena() {
+        return iaArena;
+    }
+
+    /**
+     * @param iaArena the iaArena to set
+     */
+    public void setIaArena(IAArena iaArena) {
+        this.iaArena = iaArena;
+    }
+
+    
     
 
 }

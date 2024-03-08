@@ -18,15 +18,15 @@ public class TelevisionShow {
     // AQUI - estan los personajes NO utilizados listos para ser escojidos, separados por color de tajeta.
     // Cuando se escojan se le debe MODIFICAR el ID porque por default es 0
       private Character[] yellowAvailable;
-      private Character[] blueAvailable;
+      private Character[] greenAvailable;
       private Character[] redAvailable;
 
     public TelevisionShow() {
     }
 
-    public TelevisionShow(Character[] yellowAvailable, Character[] blueAvailable, Character[] redAvailable) {
+    public TelevisionShow(Character[] yellowAvailable, Character[] greenAvailable, Character[] redAvailable) {
         this.yellowAvailable = yellowAvailable;
-        this.blueAvailable = blueAvailable;
+        this.greenAvailable = greenAvailable;
         this.redAvailable = redAvailable;
     }
 
@@ -45,17 +45,17 @@ public class TelevisionShow {
     }
 
     /**
-     * @return the blueAvailable
+     * @return the GreenAvailable
      */
-    public Character[] getBlueAvailable() {
-        return blueAvailable;
+    public Character[] getGreenAvailable() {
+        return greenAvailable;
     }
 
     /**
-     * @param blueAvailable the blueAvailable to set
+     * @param greenAvailable the greenAvailable to set
      */
-    public void setBlueAvailable(Character[] blueAvailable) {
-        this.blueAvailable = blueAvailable;
+    public void setGreenAvailable(Character[] greenAvailable) {
+        this.greenAvailable = greenAvailable;
     }
 
     /**
@@ -80,8 +80,8 @@ public class TelevisionShow {
             }
         }
         
-        System.out.println("\nBlue Available Characters:");
-        for (Character character : blueAvailable) {
+        System.out.println("\nGreen Available Characters:");
+        for (Character character : greenAvailable) {
             if (character != null) { 
                 System.out.println(character);
             }
