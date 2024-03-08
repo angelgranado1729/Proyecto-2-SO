@@ -93,5 +93,17 @@ public class Character extends Thread {
         
         return qualityPoints;
     }
-
+    
+    public String toString() {
+        return "Character{" +
+                "chapterId=" + chapterId +
+                ", hitPoints=" + hitPoints +
+                ", speedVelocity=" + speedVelocity +
+                ", agility=" + agility +
+                ", hability='" + hability + '\'' +
+                ", priorityLevel=" + priorityLevel +
+                ", urlSource='" + urlSource + '\'' +
+                '}';
+    }
+    
 }

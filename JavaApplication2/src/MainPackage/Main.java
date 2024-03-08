@@ -4,8 +4,10 @@
  */
 package MainPackage;
 
+import FileFunctions.FileFunctions;
 import GUIClasses.Home;
 import MainClasses.Character;
+import java.io.File;
 
 /**
  *
@@ -19,11 +21,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
      
-//
-//        Home home = new Home();
-//        home.setVisible(true);
-         Character chapter = new Character(1, 120, 50, 50, "Parálisis", "/GUI/Assets/12-mitch-brown.png");
-        chapter.start();
+        App app = new App();
+        app.start();
     }
     
 }
