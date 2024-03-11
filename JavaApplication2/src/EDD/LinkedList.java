@@ -3,15 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package EDD;
+import MainClasses.CharacterTv;
 
 /**
  *
  * @author angel
  */
-public class LinkedList<T> {
+public class LinkedList {
 
     // Atributos de la clase
-    private Node<T> pFirst;
+    private Node pFirst;
     private int iSize;
 
     /**
@@ -26,7 +27,7 @@ public class LinkedList<T> {
      * Destruye la lista completamente.
      */
     public void destroy() {
-        Node<T> pAux = getpFirst();
+        Node pAux = getpFirst();
         while (pAux != null) {
             pAux = getpFirst();
             setpFirst(next(pAux));
@@ -43,7 +44,7 @@ public class LinkedList<T> {
      * @return null si el nodo dado no pertenece a la lista o si es el ultimo,
      * en caso contrario retorna el siguiente nodo enlazado.
      */
-    public Node<T> next(Node<T> pNode) {
+    public Node next(Node pNode) {
         if (pNode != null) {
             return pNode.getNextNode();
         } else {
@@ -75,7 +76,7 @@ public class LinkedList<T> {
      *
      * @return el primer nodo.
      */
-    public Node<T> first() {
+    public Node first() {
         return getpFirst();
     }
 
@@ -84,13 +85,12 @@ public class LinkedList<T> {
      */
     public void deleteFirst() {
         if (!isEmpty()) {
-            Node<T> pAux = getpFirst();
+            Node pAux = getpFirst();
             setpFirst(next(pAux));
             pAux = null;
             setiSize(getiSize() - 1);
         }
     }
-
 
     /**
      * Elimina el nodo de la posicion dada y lo retorna.
@@ -99,10 +99,10 @@ public class LinkedList<T> {
      * @return el nodo que ha sido eliminado, si no pertenece a la lista
      * entonces retorna null.
      */
-    public Node<T> deleteAndReturn(int index) {
+    public Node deleteAndReturn(int index) {
         if (!isEmpty()) {
             if (index >= 0 && index < getiSize()) {
-                Node<T> pAux = getpFirst();
+                Node pAux = getpFirst();
                 if (index == 0) {
                     setpFirst(next(pAux));
                     setiSize(getiSize() - 1);
@@ -121,19 +121,18 @@ public class LinkedList<T> {
         return null;
     }
 
-
     /**
      * Guarda la informacion dada en un nuevo nodo que sera insertado en la
      * ultima posicion de la lista.
      *
      * @param tInfo, la informacion a guardar.
      */
-    public void addEnd(T tInfo) {
-        Node<T> pNode = new Node<>(tInfo);
+    public void addEnd(CharacterTv tInfo) {
+        Node pNode = new Node(tInfo);
         if (isEmpty()) {
             setpFirst(pNode);
         } else {
-            Node<T> pAux = first();
+            Node pAux = first();
             while (next(pAux) != null) {
                 pAux = next(pAux);
             }
@@ -143,16 +142,52 @@ public class LinkedList<T> {
     }
 
     /**
+     * Inserta un nuevo elemento en la lista de manera ordenada. La comparación
+     * se hace por el nombre del personaje, de forma alfabética.
+     *
+     * @param newCharacter El nuevo personaje a insertar en la lista.
+     */
+    public void insertOrdered(CharacterTv newCharacter) {
+        Node newNode = new Node(newCharacter);
+        Node current = pFirst;
+        Node previous = null;
+        
+        
+        current.getTInfo().getChapterId();
+
+        // Buscar la posición correcta para la inserción
+        while (current != null && current.getTInfo().getNameCharacter().compareToIgnoreCase(newCharacter.getNameCharacter()) < 0) {
+            previous = current;
+            current = current.getNextNode();
+        }
+
+        // Si debe ir al principio de la lista
+        if (previous == null) {
+            newNode.setNextNode(pFirst);
+            pFirst = newNode;
+        } else {
+            // Inserción en medio o al final de la lista
+            newNode.setNextNode(current);
+            previous.setNextNode(newNode);
+        }
+        iSize++;
+    }
+    
+    public void add(CharacterTv charactertv){
+        
+    }
+
+    /**
      * @return the pFirst
      */
-    public Node<T> getpFirst() {
+    public Node getpFirst() {
         return pFirst;
     }
 
     /**
      * @param pFirst the pFirst to set
      */
-    public void setpFirst(Node<T> pFirst) {
+    public void setpFirst(Node pFirst) {
         this.pFirst = pFirst;
     }
 

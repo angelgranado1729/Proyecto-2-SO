@@ -5,6 +5,7 @@
 package MainPackage;
 
 import FileFunctions.FileFunctions;
+import GUIClasses.ControlMainUI;
 import GUIClasses.Home;
 import Helpers.HelpersFunctions;
 import MainClasses.IAArena;
@@ -48,9 +49,23 @@ public class App {
         
         HelpersFunctions.loadParams();
         // Inicia la simulacion
-        Home home = new Home();
-        home.setVisible(true);
-        app.getIaArena().prepareFight();
+        ControlMainUI.getHome().setVisible(true);
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-yellow.png");
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
+//        
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-green.png");
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
+//        
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-yellow.png");
+//        
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
+//        
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
+//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
+        
+//        app.getIaArena().prepareFight();
     }
 
     /**

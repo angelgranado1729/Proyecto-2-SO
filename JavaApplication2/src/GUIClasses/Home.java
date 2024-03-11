@@ -31,13 +31,18 @@ public class Home extends javax.swing.JFrame {
         ImageIcon imgIcon3 = imageUtils.loadScaledImage("/GUI/Assets/rigby-yellow.png", 150, 200);
         ImageIcon imgIcon4 = imageUtils.loadScaledImage("/GUI/Assets/rigby-yellow.png", 60, 80);
         ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 430, 700);
+        
+        //TODO: Quitar esto
         ImageIcon regularShowLogo = imageUtils.loadScaledImage("/GUI/Assets/regularShow.png", 140, 30);
+        
+        
+        
         ImageIcon cartoonNetworkLogo = imageUtils.loadScaledImage("/GUI/Assets/CN.png", 140, 80);
         ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/nickelodeon.png", 140, 100);
 
         this.nickelodeonLogo.setIcon(nickelodeonLogo);
         this.cartoonNetworkLogo.setIcon(cartoonNetworkLogo);
-        this.regularShowLogo.setIcon(regularShowLogo);
+        this.cartoonNetworkLogo.setText("");
         
         // Se setean las imagenes que la lucha en la IA.
         ImageIcon regularShowCardIA=  imageUtils.loadScaledImage(app.getIaArena().getRegularShowFighter().getUrlSource(), 150, 200);
@@ -54,29 +59,9 @@ public class Home extends javax.swing.JFrame {
         
       
         this.fightingSquare.setIcon(imgIcon2);
-        this.jLabel1.setIcon(imgIcon4);
-        this.jLabel2.setIcon(imgIcon4);
-        this.jLabel3.setIcon(imgIcon4);
-        this.jLabel4.setIcon(imgIcon4);
-        this.jLabel5.setIcon(imgIcon4);
-        this.jLabel6.setIcon(imgIcon4);
-        this.jLabel7.setIcon(imgIcon4);
-        this.jLabel8.setIcon(imgIcon4);
-        this.jLabel9.setIcon(imgIcon4);
-        this.jLabel10.setIcon(imgIcon4);
-        this.jLabel11.setIcon(imgIcon4);
-        this.jLabel12.setIcon(imgIcon4);
-        this.jLabel13.setIcon(imgIcon4);
-        this.jLabel14.setIcon(imgIcon4);
-        this.jLabel15.setIcon(imgIcon4);
-        this.jLabel16.setIcon(imgIcon4);
-        this.jLabel17.setIcon(imgIcon4);
-        this.jLabel18.setIcon(imgIcon4);
-        this.jLabel19.setIcon(imgIcon4);
-        this.jLabel20.setIcon(imgIcon4);
-      
-
-
+        
+        
+        
         
 
     }
@@ -99,40 +84,11 @@ public class Home extends javax.swing.JFrame {
         Winner = new javax.swing.JLabel();
         RegularShowActualStatus = new javax.swing.JLabel();
         AvatarActualStatus = new javax.swing.JLabel();
-        RegularShowLowPriorityTitle = new javax.swing.JLabel();
         FightingTitle = new javax.swing.JLabel();
-        regularShowLogo = new javax.swing.JLabel();
         RegularShowCard = new javax.swing.JLabel();
         AvatarCard = new javax.swing.JLabel();
         fightingSquare = new javax.swing.JLabel();
         fightingTitle4 = new javax.swing.JLabel();
-        RegularShowHighPriorityTitle = new javax.swing.JLabel();
-        AvatarHighPriorityTitle = new javax.swing.JLabel();
-        fightingTitle8 = new javax.swing.JLabel();
-        RegularShowMediumPriorityTitle = new javax.swing.JLabel();
-        AvatarMediumPriorityTitle = new javax.swing.JLabel();
-        AvatarLowPriorityTitle = new javax.swing.JLabel();
-        fightingTitle12 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         cartoonNetworkLogo = new javax.swing.JLabel();
         nickelodeonLogo = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -199,19 +155,10 @@ public class Home extends javax.swing.JFrame {
         AvatarActualStatus.setText("Estado actual:");
         jPanel1.add(AvatarActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
 
-        RegularShowLowPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        RegularShowLowPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        RegularShowLowPriorityTitle.setText("COLA PRIORIDAD: BAJA");
-        jPanel1.add(RegularShowLowPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
-
         FightingTitle.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
         FightingTitle.setForeground(new java.awt.Color(255, 255, 255));
         FightingTitle.setText("FIGHTING AREA");
         jPanel1.add(FightingTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
-
-        regularShowLogo.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        regularShowLogo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(regularShowLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 30, 30));
         jPanel1.add(RegularShowCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
         jPanel1.add(AvatarCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
@@ -223,106 +170,13 @@ public class Home extends javax.swing.JFrame {
         fightingTitle4.setText("PersonajeID:");
         jPanel1.add(fightingTitle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
 
-        RegularShowHighPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        RegularShowHighPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        RegularShowHighPriorityTitle.setText("COLA PRIORIDAD: ALTA");
-        jPanel1.add(RegularShowHighPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        cartoonNetworkLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartoonNetworkLogo.setText("cartoonNetworkLogo");
+        jPanel1.add(cartoonNetworkLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, 90));
 
-        AvatarHighPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        AvatarHighPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        AvatarHighPriorityTitle.setText("COLA PRIORIDAD: ALTA");
-        jPanel1.add(AvatarHighPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, -1, -1));
-
-        fightingTitle8.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        fightingTitle8.setForeground(new java.awt.Color(0, 0, 0));
-        fightingTitle8.setText("COLA DE REFUERZO");
-        jPanel1.add(fightingTitle8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, -1, -1));
-
-        RegularShowMediumPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        RegularShowMediumPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        RegularShowMediumPriorityTitle.setText("COLA PRIORIDAD: MEDIA");
-        jPanel1.add(RegularShowMediumPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
-
-        AvatarMediumPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        AvatarMediumPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        AvatarMediumPriorityTitle.setText("COLA PRIORIDAD: MEDIA");
-        jPanel1.add(AvatarMediumPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 280, -1, -1));
-
-        AvatarLowPriorityTitle.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        AvatarLowPriorityTitle.setForeground(new java.awt.Color(0, 0, 0));
-        AvatarLowPriorityTitle.setText("COLA PRIORIDAD: BAJA");
-        jPanel1.add(AvatarLowPriorityTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 440, -1, -1));
-
-        fightingTitle12.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
-        fightingTitle12.setForeground(new java.awt.Color(0, 0, 0));
-        fightingTitle12.setText("COLA DE REFUERZO");
-        jPanel1.add(fightingTitle12, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 600, -1, -1));
-
-        jLabel1.setText("a..");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
-
-        jLabel2.setText("a..");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
-
-        jLabel3.setText("a..");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
-
-        jLabel4.setText("a..");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
-
-        jLabel5.setText("a..");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
-
-        jLabel6.setText("a..");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
-
-        jLabel7.setText("a..");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, -1));
-
-        jLabel8.setText("a..");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
-
-        jLabel9.setText("a..");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
-
-        jLabel10.setText("a..");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
-
-        jLabel11.setText("a..");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
-
-        jLabel12.setText("a..");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-
-        jLabel13.setText("a..");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
-
-        jLabel14.setText("a..");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
-
-        jLabel15.setText("a..");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
-
-        jLabel16.setText("a..");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
-
-        jLabel17.setText("a..");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, -1, -1));
-
-        jLabel18.setText("a..");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, -1, -1));
-
-        jLabel19.setText("a..");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, -1, -1));
-
-        jLabel20.setText("a..");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 590, -1, -1));
-
-        cartoonNetworkLogo.setText("a..");
-        jPanel1.add(cartoonNetworkLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
-
+        nickelodeonLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nickelodeonLogo.setText("a..");
-        jPanel1.add(nickelodeonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
+        jPanel1.add(nickelodeonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, -1, -1));
 
         jLabel21.setText("jLabel21");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
@@ -402,50 +256,26 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel AvatarActualStatus;
     private javax.swing.JLabel AvatarCard;
     private javax.swing.JLabel AvatarCharacterID;
-    private javax.swing.JLabel AvatarHighPriorityTitle;
-    private javax.swing.JLabel AvatarLowPriorityTitle;
-    private javax.swing.JLabel AvatarMediumPriorityTitle;
     private javax.swing.JLabel FightingTitle;
     private javax.swing.JLabel RegularShowActualHP;
     private javax.swing.JLabel RegularShowActualStatus;
     private javax.swing.JLabel RegularShowCard;
     private javax.swing.JLabel RegularShowCharacterID1;
-    private javax.swing.JLabel RegularShowHighPriorityTitle;
-    private javax.swing.JLabel RegularShowLowPriorityTitle;
-    private javax.swing.JLabel RegularShowMediumPriorityTitle;
     private javax.swing.JLabel Winner;
     private javax.swing.JLabel cartoonNetworkLogo;
     private javax.swing.JLabel fightingSquare;
-    private javax.swing.JLabel fightingTitle12;
     private javax.swing.JLabel fightingTitle4;
-    private javax.swing.JLabel fightingTitle8;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel nickelodeonLogo;
-    private javax.swing.JLabel regularShowLogo;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+
+
 }

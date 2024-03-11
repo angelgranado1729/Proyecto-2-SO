@@ -4,95 +4,133 @@
  */
 package MainClasses;
 
+import EDD.Queue;
+
 /**
  *
  * @author user
  */
 public class TelevisionShow {
-     // Meter aqui las colas en vez de array para colas de prioridades
-//    private Character[] highPriorityQueue;
-//    private Character[] mediumPriorityQueue;
-//    private Character[] lowPriorityQueue;
-//    private Character[] strengtheningQueue;
-   
-    // AQUI - estan los personajes NO utilizados listos para ser escojidos, separados por color de tajeta.
-    // Cuando se escojan se le debe MODIFICAR el ID porque por default es 0
-      private Character[] yellowAvailable;
-      private Character[] greenAvailable;
-      private Character[] redAvailable;
-
-    public TelevisionShow() {
-    }
-
-    public TelevisionShow(Character[] yellowAvailable, Character[] greenAvailable, Character[] redAvailable) {
-        this.yellowAvailable = yellowAvailable;
-        this.greenAvailable = greenAvailable;
-        this.redAvailable = redAvailable;
-    }
-
-    /**
-     * @return the yellowAvailable
-     */
-    public Character[] getYellowAvailable() {
-        return yellowAvailable;
-    }
-
-    /**
-     * @param yellowAvailable the yellowAvailable to set
-     */
-    public void setYellowAvailable(Character[] yellowAvailable) {
-        this.yellowAvailable = yellowAvailable;
-    }
-
-    /**
-     * @return the GreenAvailable
-     */
-    public Character[] getGreenAvailable() {
-        return greenAvailable;
-    }
-
-    /**
-     * @param greenAvailable the greenAvailable to set
-     */
-    public void setGreenAvailable(Character[] greenAvailable) {
-        this.greenAvailable = greenAvailable;
-    }
-
-    /**
-     * @return the redAvailable
-     */
-    public Character[] getRedAvailable() {
-        return redAvailable;
-    }
-
-    /**
-     * @param redAvailable the redAvailable to set
-     */
-    public void setRedAvailable(Character[] redAvailable) {
-        this.redAvailable = redAvailable;
+    
+    
+    private Queue<CharacterTv> queue1 = new Queue<CharacterTv>();
+    private Queue<CharacterTv> queue2 = new Queue<CharacterTv>();
+    private Queue<CharacterTv> queue3 = new Queue<CharacterTv>();
+    private Queue<CharacterTv> queue4 = new Queue<CharacterTv>();
+    private String packageImg;
+    private String logoUrl;
+    
+    
+    
+    public TelevisionShow(String packageImg) {
+        this.packageImg = packageImg;
+        this.logoUrl = this.packageImg + "/logo.png";
     }
     
-    public void printAvailableCharacters() {
-        System.out.println("Yellow Available Characters:");
-        for (Character character : yellowAvailable) {
-            if (character != null) { 
-                System.out.println(character);
-            }
-        }
+    public CharacterTv createCharacter() {
+        double randomValue = Math.random(); 
         
-        System.out.println("\nGreen Available Characters:");
-        for (Character character : greenAvailable) {
-            if (character != null) { 
-                System.out.println(character);
-            }
-        }
         
-        System.out.println("\nRed Available Characters:");
-        for (Character character : redAvailable) {
-            if (character != null) { 
-                System.out.println(character);
-            }
-        }
     }
-       
+    
+    
+    
+    
+    public void createInitialCharacters(){
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    /**
+     * @return the queue1
+     */
+    public Queue<CharacterTv> getQueue1() {
+        return queue1;
+    }
+
+    /**
+     * @param queue1 the queue1 to set
+     */
+    public void setQueue1(Queue<CharacterTv> queue1) {
+        this.queue1 = queue1;
+    }
+
+    /**
+     * @return the queue2
+     */
+    public Queue<CharacterTv> getQueue2() {
+        return queue2;
+    }
+
+    /**
+     * @param queue2 the queue2 to set
+     */
+    public void setQueue2(Queue<CharacterTv> queue2) {
+        this.queue2 = queue2;
+    }
+
+    /**
+     * @return the queue3
+     */
+    public Queue<CharacterTv> getQueue3() {
+        return queue3;
+    }
+
+    /**
+     * @param queue3 the queue3 to set
+     */
+    public void setQueue3(Queue<CharacterTv> queue3) {
+        this.queue3 = queue3;
+    }
+
+    /**
+     * @return the queue4
+     */
+    public Queue<CharacterTv> getQueue4() {
+        return queue4;
+    }
+
+    /**
+     * @param queue4 the queue4 to set
+     */
+    public void setQueue4(Queue<CharacterTv> queue4) {
+        this.queue4 = queue4;
+    }
+
+    /**
+     * @return the packageImg
+     */
+    public String getPackageImg() {
+        return packageImg;
+    }
+
+    /**
+     * @param packageImg the packageImg to set
+     */
+    public void setPackageImg(String packageImg) {
+        this.packageImg = packageImg;
+    }
+
+    /**
+     * @return the logoUrl
+     */
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    /**
+     * @param logoUrl the logoUrl to set
+     */
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
 }

@@ -7,16 +7,16 @@ package FileFunctions;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import MainClasses.Character;
+import MainClasses.CharacterTv;
 
 public class FileFunctions {
     // Definimos arrays para cada categoría
-    private static Character[] yellowRegularShow;
-    private static Character[] greenRegularShow;
-    private static Character[] redRegularShow;
-    private static Character[] yellowAvatar;
-    private static Character[] greenAvatar;
-    private static Character[] redAvatar;
+    private static CharacterTv[] yellowRegularShow;
+    private static CharacterTv[] greenRegularShow;
+    private static CharacterTv[] redRegularShow;
+    private static CharacterTv[] yellowAvatar;
+    private static CharacterTv[] greenAvatar;
+    private static CharacterTv[] redAvatar;
 
     public static void read(File file) {
         String line;
@@ -59,12 +59,12 @@ public class FileFunctions {
         }
 
         // Inicializamos los arrays con el tamaño contado para cada uno
-        setYellowRegularShow(new Character[countYellowRegularShow]);
-        setGreenRegularShow(new Character[countGreenRegularShow]);
-        setRedRegularShow(new Character[countRedRegularShow]);
-        setYellowAvatar(new Character[countYellowAvatar]);
-        setGreenAvatar(new Character[countGreenAvatar]);
-        setRedAvatar(new Character[countRedAvatar]);
+        setYellowRegularShow(new CharacterTv[countYellowRegularShow]);
+        setGreenRegularShow(new CharacterTv[countGreenRegularShow]);
+        setRedRegularShow(new CharacterTv[countRedRegularShow]);
+        setYellowAvatar(new CharacterTv[countYellowAvatar]);
+        setGreenAvatar(new CharacterTv[countGreenAvatar]);
+        setRedAvatar(new CharacterTv[countRedAvatar]);
 
         // Índices para llenar los arrays
         int indexYellowRegularShow = 0;
@@ -85,7 +85,7 @@ public class FileFunctions {
                         String[] parts = line.split(",");
                         String url = parts[5].split(";")[0]; // Para aislar la URL que es el ultimo elemento en cada fila. 
 
-                        Character character = new Character(
+                        CharacterTv character = new CharacterTv(
                             // AQUÍ EL ID ES 0 PORQUE EL ID SE ESCOGE AL MOMENTO SELECCIÓN PARA ALGUNA COLA. 
                             // Es decir, por default ID 0
                             0, 
@@ -121,84 +121,84 @@ public class FileFunctions {
     /**
      * @return the yellowRegularShow
      */
-    public static Character[] getYellowRegularShow() {
+    public static CharacterTv[] getYellowRegularShow() {
         return yellowRegularShow;
     }
 
     /**
      * @param aYellowRegularShow the yellowRegularShow to set
      */
-    public static void setYellowRegularShow(Character[] aYellowRegularShow) {
+    public static void setYellowRegularShow(CharacterTv[] aYellowRegularShow) {
         yellowRegularShow = aYellowRegularShow;
     }
 
     /**
      * @return the greenRegularShow
      */
-    public static Character[] getGreenRegularShow() {
+    public static CharacterTv[] getGreenRegularShow() {
         return greenRegularShow;
     }
 
     /**
      * @param aGreenRegularShow the greenRegularShow to set
      */
-    public static void setGreenRegularShow(Character[] aGreenRegularShow) {
+    public static void setGreenRegularShow(CharacterTv[] aGreenRegularShow) {
         greenRegularShow = aGreenRegularShow;
     }
 
     /**
      * @return the redRegularShow
      */
-    public static Character[] getRedRegularShow() {
+    public static CharacterTv[] getRedRegularShow() {
         return redRegularShow;
     }
 
     /**
      * @param aRedRegularShow the redRegularShow to set
      */
-    public static void setRedRegularShow(Character[] aRedRegularShow) {
+    public static void setRedRegularShow(CharacterTv[] aRedRegularShow) {
         redRegularShow = aRedRegularShow;
     }
 
     /**
      * @return the yellowAvatar
      */
-    public static Character[] getYellowAvatar() {
+    public static CharacterTv[] getYellowAvatar() {
         return yellowAvatar;
     }
 
     /**
      * @param aYellowAvatar the yellowAvatar to set
      */
-    public static void setYellowAvatar(Character[] aYellowAvatar) {
+    public static void setYellowAvatar(CharacterTv[] aYellowAvatar) {
         yellowAvatar = aYellowAvatar;
     }
 
     /**
      * @return the greenAvatar
      */
-    public static Character[] getGreenAvatar() {
+    public static CharacterTv[] getGreenAvatar() {
         return greenAvatar;
     }
 
     /**
      * @param aGreenAvatar the greenAvatar to set
      */
-    public static void setGreenAvatar(Character[] aGreenAvatar) {
+    public static void setGreenAvatar(CharacterTv[] aGreenAvatar) {
         greenAvatar = aGreenAvatar;
     }
 
     /**
      * @return the redAvatar
      */
-    public static Character[] getRedAvatar() {
+    public static CharacterTv[] getRedAvatar() {
         return redAvatar;
     }
 
     /**
      * @param aRedAvatar the redAvatar to set
      */
-    public static void setRedAvatar(Character[] aRedAvatar) {
+    public static void setRedAvatar(CharacterTv[] aRedAvatar) {
         redAvatar = aRedAvatar;
     }
     

@@ -6,7 +6,7 @@ package MainPackage;
 
 import FileFunctions.FileFunctions;
 import GUIClasses.Home;
-import MainClasses.Character;
+import MainClasses.CharacterTv;
 import java.io.File;
 
 /**

@@ -29,6 +29,7 @@ Susan,85,45,65,Congelamiento,/GUI/Assets/susan-yellow.png;
 Pam,105,55,60,Curación,/GUI/Assets/pam-yellow.png;
 Archie,95,65,70,Ataque crítico,/GUI/Assets/archie-yellow.png;
 John,95,65,65,Parálisis,/GUI/Assets/john-yellow.png;
+---------------------------- Green -----------------------------------
 Mordecai,120,92,100,Ataque Crítico,/GUI/Assets/mordecai-green.png;
 Rigby,83,82,74,Curación,/GUI/Assets/rigby-green.png;
 Benson,73,85,45,Parálisis,/GUI/Assets/benson-green.png;
@@ -59,6 +60,7 @@ Susan,102,60,83,Curación,/GUI/Assets/susan-green.png;
 Pam,98,81,48,Aumento de Agilidad,/GUI/Assets/pam-green.png;
 Archie,97,87,73,Ataque Crítico,/GUI/Assets/archie-green.png;
 John,92,95,99,Reducción de Daño,/GUI/Assets/john-green.png;
+---------------------------- Red -----------------------------------
 Mordecai,95,82,93,Aumento de Velocidad,/GUI/Assets/mordecai-red.png;
 Rigby,120,77,83,Curación,/GUI/Assets/rigby-red.png;
 Benson,93,85,45,Reducción de Daño,/GUI/Assets/benson-red.png;
@@ -121,6 +123,7 @@ Pathik,85,55,70,Curación,/GUI/Assets/pathik-yellow.png;
 La Roca,110,60,90,Ataque Crítico,/GUI/Assets/laroca-yellow.png;
 On Ji,80,70,75,Congelamiento,/GUI/Assets/onji-yellow.png;
 Bumi,105,60,85,Congelamiento,/GUI/Assets/bumi-yellow.png;
+---------------------------- Green -----------------------------------
 Ang,120,100,100,Aumento de Velocidad,/GUI/Assets/ang-green.png;
 Katara,90,75,85,Curación,/GUI/Assets/katara-green.png;
 Sokka,82,70,80,Ataque Crítico,/GUI/Assets/sokka-green.png;
@@ -151,6 +154,7 @@ Pathik,95,53,70,Curación,/GUI/Assets/pathik-green.png;
 La Roca,100,60,90,Ataque Crítico,/GUI/Assets/laroca-green.png;
 On Ji,96,65,73,Congelamiento,/GUI/Assets/onji-green.png;
 Bumi,103,99,66,Curación,/GUI/Assets/bumi-green.png;
+---------------------------- Red -----------------------------------
 Ang,120,100,100,Aumento de Velocidad,/GUI/Assets/ang-red.png;
 Katara,97,75,93,Curación,/GUI/Assets/katara-red.png;
 Sokka,76,70,84,Ataque Crítico,/GUI/Assets/sokka-red.png;
@@ -181,4 +185,3 @@ Pathik,75,53,70,Curación,/GUI/Assets/pathik-red.png;
 La Roca,76,60,75,Ataque Crítico,/GUI/Assets/laroca-red.png;
 On Ji,89,65,70,Congelamiento,/GUI/Assets/onji-red.png;
 Bumi,87,99,66,Curación,/GUI/Assets/bumi-red.png;
-

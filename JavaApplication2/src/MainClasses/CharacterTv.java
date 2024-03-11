@@ -13,24 +13,28 @@ import java.util.logging.Logger;
  *
  * @author user
  */
-public class Character extends Thread {
+public class CharacterTv extends Thread {
+
     private int chapterId;
-    private int hitPoints; 
+    private String nameCharacter;
+    private int hitPoints;
     private int speedVelocity;
     private int agility;
     private String hability;
-    private int priorityLevel; 
-    private String urlSource; 
+    private int priorityLevel;
+    private String urlSource;
 
-    public Character(int chapterId, int hitPoints, int speedVelocity, int agility,String hability, String urlSource) {
+    public CharacterTv(int chapterId, String nameCharacter, int hitPoints,
+            int speedVelocity, int agility, String hability, String urlSource) {
         this.chapterId = chapterId;
+        this.nameCharacter = nameCharacter;
         this.hitPoints = hitPoints;
         this.speedVelocity = speedVelocity;
         this.agility = agility;
         this.urlSource = urlSource;
         this.hability = hability;
     }
-    
+
     @Override
     public void run() {
         try {
@@ -46,19 +50,19 @@ public class Character extends Thread {
     }
 
     public String toString() {
-        return "Character{" +
-                "chapterId=" + getChapterId() +
-                ", hitPoints=" + getHitPoints() +
-                ", speedVelocity=" + getSpeedVelocity() +
-                ", agility=" + getAgility() +
-                ", hability='" + getHability() + '\'' +
-                ", priorityLevel=" + getPriorityLevel() +
-                ", urlSource='" + getUrlSource() + '\'' +
-                '}';
+        return "Character{"
+                + "chapterId=" + getChapterId()
+                + ", hitPoints=" + getHitPoints()
+                + ", speedVelocity=" + getSpeedVelocity()
+                + ", agility=" + getAgility()
+                + ", hability='" + getHability() + '\''
+                + ", priorityLevel=" + getPriorityLevel()
+                + ", urlSource='" + getUrlSource() + '\''
+                + '}';
     }
-    
+
     public void takeDamage(int damage) {
-    // Reducir los hitPoints en la mitad del daño recibido
+        // Reducir los hitPoints en la mitad del daño recibido
         this.hitPoints -= (damage / 2);
 
         // Asegurarse de que los hitPoints no caigan bajo cero
@@ -66,17 +70,16 @@ public class Character extends Thread {
             this.hitPoints = 0;
         }
     }
-    
+
     public void heal(int healthPoints) {
         // Incrementar los hitPoints en la cantidad especificada
         this.hitPoints += healthPoints;
-   
+
         int maxHP = 160;
         if (this.hitPoints > maxHP) {
             this.hitPoints = maxHP;
+        }
     }
-}
-
 
     /**
      * @return the chapterId
@@ -175,7 +178,21 @@ public class Character extends Thread {
     public void setUrlSource(String urlSource) {
         this.urlSource = urlSource;
     }
+
+    /**
+     * @return the nameCharacter
+     */
+    public String getNameCharacter() {
+        return nameCharacter;
+    }
+
+    /**
+     * @param nameCharacter the nameCharacter to set
+     */
+    public void setNameCharacter(String nameCharacter) {
+        this.nameCharacter = nameCharacter;
+    }
     
     
-    
+
 }

@@ -4,27 +4,28 @@
  */
 package EDD;
 
+import MainClasses.CharacterTv;
 /**
  *
  * @author angel
  */
-public class Node<T> {
+public class Node {
 
     /**
      * La infomacion a guardad en el nodo.
      */
-    private T tInfo;
+    private CharacterTv tInfo;
     /**
      * El siguiente nodo.
      */
-    private Node<T> pNextNode;
+    private Node pNextNode;
 
     /**
      * Constructor de la clase.
      *
      * @param tInfo, la informacion a almacenar en el nodo.
      */
-    public Node(T tInfo) {
+    public Node(CharacterTv tInfo) {
         this.tInfo = tInfo;
         this.pNextNode = null;
     }
@@ -42,7 +43,7 @@ public class Node<T> {
      *
      * @return
      */
-    public T getTInfo() {
+    public CharacterTv getTInfo() {
         return this.tInfo;
     }
 
@@ -51,7 +52,7 @@ public class Node<T> {
      *
      * @param tInfo
      */
-    public void setTInfo(T tInfo) {
+    public void setTInfo(CharacterTv tInfo) {
         this.tInfo = tInfo;
     }
 
@@ -60,7 +61,7 @@ public class Node<T> {
      *
      * @return el nodo siguiente que esta enlazado.
      */
-    public Node<T> getNextNode() {
+    public Node getNextNode() {
         return this.pNextNode;
     }
 
@@ -69,17 +70,13 @@ public class Node<T> {
      *
      * @param pNextNode
      */
-    public void setNextNode(Node<T> pNextNode) {
+    public void setNextNode(Node pNextNode) {
         this.pNextNode = pNextNode;
     }
 
     @Override
     public String toString() {
         return this.tInfo.toString();
-    }
-
-    public void addAttribute(String uilabel, String toString) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

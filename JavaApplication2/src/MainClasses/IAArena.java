@@ -12,8 +12,8 @@ import java.util.Random;
  */
 public class IAArena {
     
-    private Character regularShowFighter; 
-    private Character avatarFighter; 
+    private CharacterTv regularShowFighter; 
+    private CharacterTv avatarFighter; 
     private String winner; 
     private int combatSpeed = 3333; // ESTE ES EL TIEMPO POR TURNO
     // El enunciado del proyecto dice que toma en 10 segundos en procesar si hay o no ganador 
@@ -113,7 +113,7 @@ public class IAArena {
         System.out.println("\nResultado final: " + getWinner());
     }
     
-    private int calculateDamage(Character attacker, Character defender) {
+    private int calculateDamage(CharacterTv attacker, CharacterTv defender) {
         // Daño base con la lógica que el ataque no puede ser completo porque sino lo matariamos de one. 
         int baseDamage = (attacker.getSpeedVelocity() + (attacker.getAgility() / 2)) / 2;
 
@@ -155,28 +155,28 @@ public class IAArena {
     /**
      * @return the regularShowFighter
      */
-    public Character getRegularShowFighter() {
+    public CharacterTv getRegularShowFighter() {
         return regularShowFighter;
     }
 
     /**
      * @param regularShowFighter the regularShowFighter to set
      */
-    public void setRegularShowFighter(Character regularShowFighter) {
+    public void setRegularShowFighter(CharacterTv regularShowFighter) {
         this.regularShowFighter = regularShowFighter;
     }
 
     /**
      * @return the avatarFighter
      */
-    public Character getAvatarFighter() {
+    public CharacterTv getAvatarFighter() {
         return avatarFighter;
     }
 
     /**
      * @param avatarFighter the avatarFighter to set
      */
-    public void setAvatarFighter(Character avatarFighter) {
+    public void setAvatarFighter(CharacterTv avatarFighter) {
         this.avatarFighter = avatarFighter;
     }
 
