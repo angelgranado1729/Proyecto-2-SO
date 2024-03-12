@@ -10,7 +10,6 @@ import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JSlider;
 
-
 /**
  *
  * @author author
@@ -27,42 +26,29 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        ImageIcon imgIcon = imageUtils.loadScaledImage("/GUI/Assets/mordecai-yellow.png", 150, 200);
-        ImageIcon imgIcon3 = imageUtils.loadScaledImage("/GUI/Assets/rigby-yellow.png", 150, 200);
-        ImageIcon imgIcon4 = imageUtils.loadScaledImage("/GUI/Assets/rigby-yellow.png", 60, 80);
-        ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 430, 700);
-        
-        //TODO: Quitar esto
-        ImageIcon regularShowLogo = imageUtils.loadScaledImage("/GUI/Assets/regularShow.png", 140, 30);
-        
-        
-        
-        ImageIcon cartoonNetworkLogo = imageUtils.loadScaledImage("/GUI/Assets/CN.png", 140, 80);
-        ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/nickelodeon.png", 140, 100);
 
-        this.nickelodeonLogo.setIcon(nickelodeonLogo);
-        this.cartoonNetworkLogo.setIcon(cartoonNetworkLogo);
-        this.cartoonNetworkLogo.setText("");
-        
+        ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 460, 700);
+        ImageIcon cartoonNetworkLogo = imageUtils.loadScaledImage("/GUI/Assets/RegularShow/logo.png", 140, 80);
+        ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/Avatar/logo.png", 140, 80);
+
+        tvPanelUI1.getLogo().setIcon(cartoonNetworkLogo);
+        tvPanelUI2.getLogo().setIcon(nickelodeonLogo);
+        tvPanelUI1.getLogo().setText("");
+        tvPanelUI2.getLogo().setText("");
+  
+
         // Se setean las imagenes que la lucha en la IA.
-        ImageIcon regularShowCardIA=  imageUtils.loadScaledImage(app.getIaArena().getRegularShowFighter().getUrlSource(), 150, 200);
-        this.RegularShowCard.setIcon(regularShowCardIA);
-       
-        ImageIcon avatarCardIA=  imageUtils.loadScaledImage(app.getIaArena().getAvatarFighter().getUrlSource(), 150, 200);
-        this.AvatarCard.setIcon(avatarCardIA);
-        
+//        ImageIcon regularShowCardIA=  imageUtils.loadScaledImage(app.getIaArena().getRegularShowFighter().getUrlSource(), 150, 200);
+//        this.RegularShowCard.setIcon(regularShowCardIA);
+//        ImageIcon avatarCardIA=  imageUtils.loadScaledImage(app.getIaArena().getAvatarFighter().getUrlSource(), 150, 200);
+//        this.AvatarCard.setIcon(avatarCardIA);
         // Se configura el slider 
-        jSlider1.setMinimum(300); 
+        jSlider1.setMinimum(300);
         jSlider1.setMaximum(5000);
-        jSlider1.setValue(app.getIaArena().getCombatSpeed());
-        
-        
-      
+//        jSlider1.setValue(app.getIaArena().getCombatSpeed());
+
         this.fightingSquare.setIcon(imgIcon2);
-        
-        
-        
-        
+        this.fightingSquare.setText("");
 
     }
 
@@ -89,12 +75,12 @@ public class Home extends javax.swing.JFrame {
         AvatarCard = new javax.swing.JLabel();
         fightingSquare = new javax.swing.JLabel();
         fightingTitle4 = new javax.swing.JLabel();
-        cartoonNetworkLogo = new javax.swing.JLabel();
-        nickelodeonLogo = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        tvPanelUI1 = new GUIClasses.TvPanelUI();
+        tvPanelUI2 = new GUIClasses.TvPanelUI();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -162,21 +148,16 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(RegularShowCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
         jPanel1.add(AvatarCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
 
-        fightingSquare.setText(".");
-        jPanel1.add(fightingSquare, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+        fightingSquare.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        fightingSquare.setForeground(new java.awt.Color(0, 0, 0));
+        fightingSquare.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fightingSquare.setText("FIGHTING AREA backgound");
+        jPanel1.add(fightingSquare, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 390, 690));
 
         fightingTitle4.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         fightingTitle4.setForeground(new java.awt.Color(255, 255, 255));
         fightingTitle4.setText("PersonajeID:");
         jPanel1.add(fightingTitle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
-
-        cartoonNetworkLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cartoonNetworkLogo.setText("cartoonNetworkLogo");
-        jPanel1.add(cartoonNetworkLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, 90));
-
-        nickelodeonLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nickelodeonLogo.setText("a..");
-        jPanel1.add(nickelodeonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, -1, -1));
 
         jLabel21.setText("jLabel21");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
@@ -189,6 +170,8 @@ public class Home extends javax.swing.JFrame {
 
         jLabel24.setText("jLabel21");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, -1, -1));
+        jPanel1.add(tvPanelUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(tvPanelUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,10 +194,9 @@ public class Home extends javax.swing.JFrame {
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
         int newSpeed = jSlider1.getValue();
-        app.getIaArena().setCombatSpeed(newSpeed);
+//        app.getIaArena().setCombatSpeed(newSpeed);
     }//GEN-LAST:event_jSlider1StateChanged
 
-    
     /**
      * @param args the command line arguments
      */
@@ -262,7 +244,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel RegularShowCard;
     private javax.swing.JLabel RegularShowCharacterID1;
     private javax.swing.JLabel Winner;
-    private javax.swing.JLabel cartoonNetworkLogo;
     private javax.swing.JLabel fightingSquare;
     private javax.swing.JLabel fightingTitle4;
     private javax.swing.JLabel jLabel21;
@@ -271,11 +252,22 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JLabel nickelodeonLogo;
+    private GUIClasses.TvPanelUI tvPanelUI1;
+    private GUIClasses.TvPanelUI tvPanelUI2;
     // End of variables declaration//GEN-END:variables
 
-    
-    
+    /**
+     * @return the tvPanelUI1
+     */
+    public GUIClasses.TvPanelUI getTvPanelUI1() {
+        return tvPanelUI1;
+    }
 
-
+    /**
+     * @return the tvPanelUI2
+     */
+    public GUIClasses.TvPanelUI getTvPanelUI2() {
+        return tvPanelUI2;
+    }
+    
 }

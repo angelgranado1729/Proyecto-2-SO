@@ -9,11 +9,11 @@ package GUIClasses;
  * @author angel
  */
 public class ControlMainUI {
-    
+
     private static final Home home = new Home();
-    
+
     public static Home getHome() {
         return home;
     }
-    
+
 }

@@ -38,24 +38,25 @@ public class QueueUI extends javax.swing.JPanel {
 
     private void myInitComponents() {
         queuePanel = new JPanel();
-        queuePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jScrollPaneQueue.setViewportView(queuePanel);
+        getQueuePanel().setLayout(new FlowLayout(FlowLayout.LEFT));
+        jScrollPaneQueue.setViewportView(getQueuePanel());
         // Dentro de tu método myInitComponents o donde configures el JScrollPane
         jScrollPaneQueue.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPaneQueue.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jScrollPaneQueue.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
     }
 
     public void addCard(String urlImage) {
         ImageIcon imgIcon = imageUtils.loadScaledImage(urlImage, 60, 80);
         JLabel etiqueta = new JLabel(imgIcon);
-        queuePanel.add(etiqueta);
+        getQueuePanel().add(etiqueta);
     }
 
-    public void updateQueueUI(Queue<CharacterTv> queue) {
-        Queue<CharacterTv> auxQueue = queue;
+    public void updateQueueUI(Queue queue) {
+        getQueuePanel().removeAll();
+        Queue auxQueue = queue.cloneQueue();
 
-        for (int i = 0; i < auxQueue.getLength(); i++) {
+        while (!auxQueue.isEmpty()) {
             CharacterTv character = auxQueue.dequeue();
             this.addCard(character.getUrlSource());
         }
@@ -85,7 +86,7 @@ public class QueueUI extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backgroundQueue.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundQueue.setBackground(new java.awt.Color(240, 233, 223));
         backgroundQueue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleQueueUI.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
@@ -93,6 +94,9 @@ public class QueueUI extends javax.swing.JPanel {
         titleQueueUI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleQueueUI.setText("COLA PRIORIDAD:");
         backgroundQueue.add(titleQueueUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, -1));
+
+        jScrollPaneQueue.setBackground(new java.awt.Color(240, 233, 223));
+        jScrollPaneQueue.setForeground(new java.awt.Color(240, 233, 223));
         backgroundQueue.add(jScrollPaneQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 333, 105));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -119,4 +123,12 @@ public class QueueUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPaneQueue;
     private javax.swing.JLabel titleQueueUI;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the queuePanel
+     */
+    public JPanel getQueuePanel() {
+        return queuePanel;
+    }
+
 }

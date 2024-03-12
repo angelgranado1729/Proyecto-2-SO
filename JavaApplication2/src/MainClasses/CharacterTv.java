@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class CharacterTv extends Thread {
 
-    private int chapterId;
+    private String characterId;
     private String nameCharacter;
     private int hitPoints;
     private int speedVelocity;
@@ -24,9 +24,16 @@ public class CharacterTv extends Thread {
     private int priorityLevel;
     private String urlSource;
 
-    public CharacterTv(int chapterId, String nameCharacter, int hitPoints,
-            int speedVelocity, int agility, String hability, String urlSource) {
-        this.chapterId = chapterId;
+    public CharacterTv(
+            String characterId,
+            String nameCharacter,
+            int hitPoints,
+            int speedVelocity,
+            int agility,
+            String hability,
+            String urlSource) {
+
+        this.characterId = characterId;
         this.nameCharacter = nameCharacter;
         this.hitPoints = hitPoints;
         this.speedVelocity = speedVelocity;
@@ -51,7 +58,7 @@ public class CharacterTv extends Thread {
 
     public String toString() {
         return "Character{"
-                + "chapterId=" + getChapterId()
+                + "chapterId=" + getCharacterId()
                 + ", hitPoints=" + getHitPoints()
                 + ", speedVelocity=" + getSpeedVelocity()
                 + ", agility=" + getAgility()
@@ -84,15 +91,15 @@ public class CharacterTv extends Thread {
     /**
      * @return the chapterId
      */
-    public int getChapterId() {
-        return chapterId;
+    public String getCharacterId() {
+        return characterId;
     }
 
     /**
      * @param chapterId the chapterId to set
      */
-    public void setChapterId(int chapterId) {
-        this.chapterId = chapterId;
+    public void setCharacterId(String characterId) {
+        this.characterId = characterId;
     }
 
     /**
@@ -192,7 +199,5 @@ public class CharacterTv extends Thread {
     public void setNameCharacter(String nameCharacter) {
         this.nameCharacter = nameCharacter;
     }
-    
-    
 
 }

@@ -4,7 +4,9 @@
  */
 package GUIClasses;
 
+import EDD.Queue;
 import MainClasses.TelevisionShow;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,21 +20,17 @@ public class TvPanelUI extends javax.swing.JPanel {
     public TvPanelUI() {
         initComponents();
     }
-    
-    public TvPanelUI(String logoUrl, TelevisionShow tv) {
-        initComponents();
-        
-        this.getQueueUI1().updateQueueUI(tv.get);
-        
-        
-        
-        
-        
-    }
 
-    
-    
-    
+//    public TvPanelUI(String logoUrl, TelevisionShow tv) {
+//        initComponents();
+//        
+//        this.getQueueUI1().updateQueueUI(tv.get);
+//        
+//        
+//        
+//        
+//        
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +45,7 @@ public class TvPanelUI extends javax.swing.JPanel {
         queueUI1 = new GUIClasses.QueueUI();
         queueUI2 = new GUIClasses.QueueUI();
         queueUI3 = new GUIClasses.QueueUI();
-        cartoonNetworkLogo1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         queueUI4 = new GUIClasses.QueueUI();
 
         cartoonNetworkLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -55,54 +53,73 @@ public class TvPanelUI extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(240, 233, 223));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(queueUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-        jPanel1.add(queueUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
-        jPanel1.add(queueUI3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
+        jPanel1.add(queueUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jPanel1.add(queueUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jPanel1.add(queueUI3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
-        cartoonNetworkLogo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cartoonNetworkLogo1.setText("TVLogo");
-        jPanel1.add(cartoonNetworkLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 90));
-        jPanel1.add(queueUI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setText("TVLogo");
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 90));
+        jPanel1.add(queueUI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 780));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 740));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cartoonNetworkLogo;
-    private javax.swing.JLabel cartoonNetworkLogo1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logo;
     private GUIClasses.QueueUI queueUI1;
     private GUIClasses.QueueUI queueUI2;
     private GUIClasses.QueueUI queueUI3;
     private GUIClasses.QueueUI queueUI4;
     // End of variables declaration//GEN-END:variables
 
+    public JLabel getLogo() {
+        return this.logo;
+    }
+
     public QueueUI getQueueUI1() {
         return this.queueUI1;
     }
-    
+
     public QueueUI getQueueUI2() {
         return this.queueUI2;
     }
-    
+
     public QueueUI getQueueUI3() {
         return this.queueUI3;
     }
-    
+
     public QueueUI getQueueUI4() {
         return this.queueUI4;
     }
-    
-    public void addUICard(int priority, String urlCard) {
+
+    public void updateUIQueue(Queue queue1, Queue queue2, Queue queue3, Queue queue4) {
+        this.queueUI1.updateQueueUI(queue1);
+        this.queueUI2.updateQueueUI(queue2);
+        this.queueUI3.updateQueueUI(queue3);
+        this.queueUI4.updateQueueUI(queue4);
         
-        
-        
+//        rapaintQueue();
     }
 
-
+//    public void rapaintQueue() {
+//        this.queueUI1.getQueuePanel().revalidate();
+//        this.queueUI1.getQueuePanel().repaint();
+//
+//        this.queueUI2.getQueuePanel().revalidate();
+//        this.queueUI2.getQueuePanel().repaint();
+//
+//        this.queueUI3.getQueuePanel().revalidate();
+//        this.queueUI3.getQueuePanel().repaint();
+//
+//        this.queueUI4.getQueuePanel().revalidate();
+//        this.queueUI4.getQueuePanel().repaint();
+//    }
 
 }

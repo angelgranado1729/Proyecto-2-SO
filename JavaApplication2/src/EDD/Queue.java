@@ -146,4 +146,45 @@ public class Queue {
         System.gc();
     }
 
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "La cola está vacía.";
+        }
+
+        StringBuilder builder = new StringBuilder();
+        Node current = front;
+        while (current != null) {
+            builder.append(current.toString());
+            if (current.getNextNode() != null) {
+                builder.append(" -> ");
+            }
+            current = current.getNextNode();
+        }
+
+        return builder.toString();
+    }
+
+    public Queue cloneQueue() {
+        Queue newQueue = new Queue();
+
+        Node node = this.getFront();
+        for (int i = 0; i < this.getLength(); i++) {
+            CharacterTv character = node.getTInfo();
+
+            CharacterTv newCharacter = new CharacterTv(
+                    character.getCharacterId(),
+                    character.getNameCharacter(),
+                    character.getHitPoints(),
+                    character.getSpeedVelocity(),
+                    character.getAgility(),
+                    character.getHability(),
+                    character.getUrlSource());
+
+            newQueue.enqueue(newCharacter);
+            node = node.getNextNode();
+        }
+        return newQueue;
+    }
+
 }

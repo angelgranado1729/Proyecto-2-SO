@@ -8,28 +8,27 @@ import FileFunctions.FileFunctions;
 import GUIClasses.ControlMainUI;
 import GUIClasses.Home;
 import Helpers.HelpersFunctions;
+import MainClasses.Administrator;
 import MainClasses.IAArena;
 import MainClasses.TelevisionShow;
 import java.io.File;
+import java.util.concurrent.Semaphore;
 
 /**
  *
  * @author user
  */
 public class App {
-     // FIle params
+    // FIle params
+
     private static String selectedPath = "test//params.txt";
     private static File selectedFile = new File(selectedPath);
     private static FileFunctions fileFunctions = new FileFunctions();
 
-    // General params
+    private static Semaphore mutex = new Semaphore(1);
     private static int battleDuration;
-
-    // General variables
-    private TelevisionShow regularShow; 
-    private TelevisionShow avatarShow; 
-    private IAArena iaArena; 
-
+    private Administrator admin;
+    private IAArena iaArena;
 
     private static App app;
 
@@ -46,10 +45,11 @@ public class App {
     }
 
     public void start() {
-        
-        HelpersFunctions.loadParams();
-        // Inicia la simulacion
+
         ControlMainUI.getHome().setVisible(true);
+        HelpersFunctions.loadParams();
+
+        // Inicia la simulacion
 //        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-yellow.png");
 //        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
 //        
@@ -64,7 +64,6 @@ public class App {
 //        
 //        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
 //        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
-        
 //        app.getIaArena().prepareFight();
     }
 
@@ -139,34 +138,6 @@ public class App {
     }
 
     /**
-     * @return the regularShow
-     */
-    public TelevisionShow getRegularShow() {
-        return regularShow;
-    }
-
-    /**
-     * @param regularShow the regularShow to set
-     */
-    public void setRegularShow(TelevisionShow regularShow) {
-        this.regularShow = regularShow;
-    }
-
-    /**
-     * @return the avatarShow
-     */
-    public TelevisionShow getAvatarShow() {
-        return avatarShow;
-    }
-
-    /**
-     * @param avatarShow the avatarShow to set
-     */
-    public void setAvatarShow(TelevisionShow avatarShow) {
-        this.avatarShow = avatarShow;
-    }
-
-    /**
      * @return the iaArena
      */
     public IAArena getIaArena() {
@@ -180,7 +151,32 @@ public class App {
         this.iaArena = iaArena;
     }
 
-    
-    
+    /**
+     * @return the mutex
+     */
+    public static Semaphore getMutex() {
+        return mutex;
+    }
+
+    /**
+     * @param aMutex the mutex to set
+     */
+    public static void setMutex(Semaphore aMutex) {
+        mutex = aMutex;
+    }
+
+    /**
+     * @return the admin
+     */
+    public Administrator getAdmin() {
+        return admin;
+    }
+
+    /**
+     * @param admin the admin to set
+     */
+    public void setAdmin(Administrator admin) {
+        this.admin = admin;
+    }
 
 }

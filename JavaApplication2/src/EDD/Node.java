@@ -5,6 +5,7 @@
 package EDD;
 
 import MainClasses.CharacterTv;
+
 /**
  *
  * @author angel
@@ -19,6 +20,8 @@ public class Node {
      * El siguiente nodo.
      */
     private Node pNextNode;
+
+    private int idNode;
 
     /**
      * Constructor de la clase.
@@ -76,7 +79,21 @@ public class Node {
 
     @Override
     public String toString() {
-        return this.tInfo.toString();
+        return "\n" + this.tInfo.toString();
+    }
+
+    /**
+     * @return the idNode
+     */
+    public int getIdNode() {
+        return idNode;
+    }
+
+    /**
+     * @param idNode the idNode to set
+     */
+    public void setIdNode(int idNode) {
+        this.idNode = idNode;
     }
 
 }

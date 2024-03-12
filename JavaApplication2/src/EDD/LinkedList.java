@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package EDD;
+
 import MainClasses.CharacterTv;
+import java.util.Random;
 
 /**
  *
@@ -142,39 +144,23 @@ public class LinkedList {
     }
 
     /**
-     * Inserta un nuevo elemento en la lista de manera ordenada. La comparación
-     * se hace por el nombre del personaje, de forma alfabética.
+     * Retorna un nodo aleatorio de la lista.
      *
-     * @param newCharacter El nuevo personaje a insertar en la lista.
+     * @return un nodo aleatorio.
      */
-    public void insertOrdered(CharacterTv newCharacter) {
-        Node newNode = new Node(newCharacter);
-        Node current = pFirst;
-        Node previous = null;
-        
-        
-        current.getTInfo().getChapterId();
+    public Node getRandomNode() {
+        if (isEmpty()) {
+            return null;
+        }
 
-        // Buscar la posición correcta para la inserción
-        while (current != null && current.getTInfo().getNameCharacter().compareToIgnoreCase(newCharacter.getNameCharacter()) < 0) {
-            previous = current;
+        int index = new Random().nextInt(iSize);
+        Node current = pFirst;
+
+        for (int i = 0; i < index; i++) {
             current = current.getNextNode();
         }
 
-        // Si debe ir al principio de la lista
-        if (previous == null) {
-            newNode.setNextNode(pFirst);
-            pFirst = newNode;
-        } else {
-            // Inserción en medio o al final de la lista
-            newNode.setNextNode(current);
-            previous.setNextNode(newNode);
-        }
-        iSize++;
-    }
-    
-    public void add(CharacterTv charactertv){
-        
+        return current;
     }
 
     /**
@@ -203,6 +189,22 @@ public class LinkedList {
      */
     public void setiSize(int iSize) {
         this.iSize = iSize;
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "La lista está vacía.";
+        }
+
+        StringBuilder builder = new StringBuilder();
+        Node current = pFirst;
+        while (current != null) {
+            builder.append(current.toString());
+            builder.append(" -> ");
+            current = current.getNextNode();
+        }
+        return builder.toString();
     }
 
 }
