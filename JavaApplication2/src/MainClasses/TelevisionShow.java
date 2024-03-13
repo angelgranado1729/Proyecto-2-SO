@@ -7,7 +7,6 @@ package MainClasses;
 import EDD.LinkedList;
 import EDD.Node;
 import EDD.Queue;
-import GUIClasses.ControlMainUI;
 import Helpers.HelpersFunctions;
 
 /**
@@ -90,6 +89,7 @@ public class TelevisionShow {
         quality = (randomValueAgility <= 0.4) ? quality + 1 : quality;
 
         Node node = new Node();
+
         if (quality == 4) {
             node = yellowCards.getRandomNode();
         } else if (quality == 3 || quality == 2) {
@@ -99,6 +99,18 @@ public class TelevisionShow {
         }
 
         createAndEnqueueCharacter(node);
+    }
+
+    public void updateQueue1() {
+        if (!(this.queue2.isEmpty())) {
+            CharacterTv aux = this.queue2.dequeue();
+            aux.setCounter(0);
+            this.queue1.enqueue(aux);
+        } else {
+            CharacterTv aux = this.queue3.dequeue();
+            aux.setCounter(0);
+            this.queue1.enqueue(aux);
+        }
     }
 
     /**

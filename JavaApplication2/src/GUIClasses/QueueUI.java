@@ -40,7 +40,7 @@ public class QueueUI extends javax.swing.JPanel {
         queuePanel = new JPanel();
         getQueuePanel().setLayout(new FlowLayout(FlowLayout.LEFT));
         jScrollPaneQueue.setViewportView(getQueuePanel());
-        // Dentro de tu método myInitComponents o donde configures el JScrollPane
+
         jScrollPaneQueue.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPaneQueue.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 

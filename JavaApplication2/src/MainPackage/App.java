@@ -45,26 +45,7 @@ public class App {
     }
 
     public void start() {
-
-        ControlMainUI.getHome().setVisible(true);
         HelpersFunctions.loadParams();
-
-        // Inicia la simulacion
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-yellow.png");
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
-//        
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-green.png");
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
-//        
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/archie-red.png");
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/rigby-yellow.png");
-//        
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
-//        
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
-//        ControlMainUI.getHome().getQueueUICN1().addCard("/GUI/Assets/ang-green.png");
-//        app.getIaArena().prepareFight();
     }
 
     /**

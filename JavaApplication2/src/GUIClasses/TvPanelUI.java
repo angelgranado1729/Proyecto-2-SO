@@ -21,16 +21,6 @@ public class TvPanelUI extends javax.swing.JPanel {
         initComponents();
     }
 
-//    public TvPanelUI(String logoUrl, TelevisionShow tv) {
-//        initComponents();
-//        
-//        this.getQueueUI1().updateQueueUI(tv.get);
-//        
-//        
-//        
-//        
-//        
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,22 +94,7 @@ public class TvPanelUI extends javax.swing.JPanel {
         this.queueUI2.updateQueueUI(queue2);
         this.queueUI3.updateQueueUI(queue3);
         this.queueUI4.updateQueueUI(queue4);
-        
-//        rapaintQueue();
-    }
 
-//    public void rapaintQueue() {
-//        this.queueUI1.getQueuePanel().revalidate();
-//        this.queueUI1.getQueuePanel().repaint();
-//
-//        this.queueUI2.getQueuePanel().revalidate();
-//        this.queueUI2.getQueuePanel().repaint();
-//
-//        this.queueUI3.getQueuePanel().revalidate();
-//        this.queueUI3.getQueuePanel().repaint();
-//
-//        this.queueUI4.getQueuePanel().revalidate();
-//        this.queueUI4.getQueuePanel().repaint();
-//    }
+    }
 
 }

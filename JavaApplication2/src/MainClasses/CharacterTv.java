@@ -23,6 +23,7 @@ public class CharacterTv extends Thread {
     private String hability;
     private int priorityLevel;
     private String urlSource;
+    private int counter = 0;
 
     public CharacterTv(
             String characterId,
@@ -54,6 +55,10 @@ public class CharacterTv extends Thread {
         } catch (Exception ex) {
             System.out.println("Excepción en el hilo: " + ex.getMessage());
         }
+    }
+    
+    public void getPromoted(){
+        this.counter +=1;        
     }
 
     public String toString() {
@@ -198,6 +203,20 @@ public class CharacterTv extends Thread {
      */
     public void setNameCharacter(String nameCharacter) {
         this.nameCharacter = nameCharacter;
+    }
+
+    /**
+     * @return the counter
+     */
+    public int getCounter() {
+        return counter;
+    }
+
+    /**
+     * @param counter the counter to set
+     */
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
 }
