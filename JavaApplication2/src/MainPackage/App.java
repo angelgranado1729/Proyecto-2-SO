@@ -5,12 +5,9 @@
 package MainPackage;
 
 import FileFunctions.FileFunctions;
-import GUIClasses.ControlMainUI;
-import GUIClasses.Home;
 import Helpers.HelpersFunctions;
 import MainClasses.Administrator;
-import MainClasses.IAArena;
-import MainClasses.TelevisionShow;
+import MainClasses.IA;
 import java.io.File;
 import java.util.concurrent.Semaphore;
 
@@ -26,9 +23,9 @@ public class App {
     private static FileFunctions fileFunctions = new FileFunctions();
 
     private static Semaphore mutex = new Semaphore(1);
-    private static int battleDuration;
-    private Administrator admin;
-    private IAArena iaArena;
+    private static int battleDuration = 10;
+    private static Administrator admin;
+    private static IA ia;
 
     private static App app;
 
@@ -119,20 +116,6 @@ public class App {
     }
 
     /**
-     * @return the iaArena
-     */
-    public IAArena getIaArena() {
-        return iaArena;
-    }
-
-    /**
-     * @param iaArena the iaArena to set
-     */
-    public void setIaArena(IAArena iaArena) {
-        this.iaArena = iaArena;
-    }
-
-    /**
      * @return the mutex
      */
     public static Semaphore getMutex() {
@@ -158,6 +141,20 @@ public class App {
      */
     public void setAdmin(Administrator admin) {
         this.admin = admin;
+    }
+
+    /**
+     * @return the ia
+     */
+    public IA getIa() {
+        return ia;
+    }
+
+    /**
+     * @param ia the ia to set
+     */
+    public void setIa(IA ia) {
+        this.ia = ia;
     }
 
 }

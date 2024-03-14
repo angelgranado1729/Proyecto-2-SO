@@ -6,9 +6,8 @@ package Helpers;
 
 import FileFunctions.FileFunctions;
 import MainClasses.Administrator;
-import MainClasses.IAArena;
+import MainClasses.IA;
 import MainPackage.App;
-import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -23,11 +22,16 @@ public class HelpersFunctions {
         FileFunctions fileFunctions = new FileFunctions();
         fileFunctions.read(App.getSelectedFile());
 
-        Administrator admin = new Administrator(app.getMutex(),
+        app.setIa(new IA());
+
+        Administrator admin = new Administrator(
+                app.getIa(),
+                app.getMutex(),
                 fileFunctions.getYellowRegularShow(), fileFunctions.getGreenRegularShow(), fileFunctions.getRedRegularShow(),
                 fileFunctions.getYellowAvatar(), fileFunctions.getGreenAvatar(), fileFunctions.getRedAvatar());
 
         app.setAdmin(admin);
+        app.getAdmin().getIa().setAdministrator(admin);
         app.getAdmin().startSimulation();
 
     }

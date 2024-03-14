@@ -4,16 +4,11 @@
  */
 package MainClasses;
 
-import static java.lang.Thread.sleep;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author user
  */
-public class CharacterTv extends Thread {
+public class CharacterTv {
 
     private String characterId;
     private String nameCharacter;
@@ -43,22 +38,8 @@ public class CharacterTv extends Thread {
         this.hability = hability;
     }
 
-    @Override
-    public void run() {
-        try {
-            while (!Thread.interrupted()) {
-                Thread.sleep(35);
-            }
-        } catch (InterruptedException ex) {
-            System.out.println("Hilo interrumpido: " + ex.getMessage());
-            Thread.currentThread().interrupt();
-        } catch (Exception ex) {
-            System.out.println("Excepción en el hilo: " + ex.getMessage());
-        }
-    }
-    
-    public void getPromoted(){
-        this.counter +=1;        
+    public void getPromoted() {
+        this.counter += 1;
     }
 
     public String toString() {

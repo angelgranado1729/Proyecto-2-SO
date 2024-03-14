@@ -6,7 +6,6 @@ package GUIClasses;
 
 import Helpers.ImageUtils;
 import MainPackage.App;
-import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JSlider;
 
@@ -15,7 +14,7 @@ import javax.swing.JSlider;
  * @author author
  */
 public class Home extends javax.swing.JFrame {
-
+    
     private ImageUtils imageUtils = new ImageUtils();
     App app = App.getInstance();
 
@@ -26,16 +25,17 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
-        ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 460, 700);
+        
+        ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 460, 850);
         ImageIcon cartoonNetworkLogo = imageUtils.loadScaledImage("/GUI/Assets/RegularShow/logo.png", 140, 80);
         ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/Avatar/logo.png", 140, 80);
-
+        
         tvPanelUI1.getLogo().setIcon(cartoonNetworkLogo);
         tvPanelUI2.getLogo().setIcon(nickelodeonLogo);
         tvPanelUI1.getLogo().setText("");
         tvPanelUI2.getLogo().setText("");
-  
+        iaStatusLabel.setText("");
+        WinnerLabelID.setText("");
 
         // Se setean las imagenes que la lucha en la IA.
 //        ImageIcon regularShowCardIA=  imageUtils.loadScaledImage(app.getIaArena().getRegularShowFighter().getUrlSource(), 150, 200);
@@ -43,13 +43,14 @@ public class Home extends javax.swing.JFrame {
 //        ImageIcon avatarCardIA=  imageUtils.loadScaledImage(app.getIaArena().getAvatarFighter().getUrlSource(), 150, 200);
 //        this.AvatarCard.setIcon(avatarCardIA);
         // Se configura el slider 
-        jSlider1.setMinimum(300);
-        jSlider1.setMaximum(5000);
-//        jSlider1.setValue(app.getIaArena().getCombatSpeed());
-
+        battleDuration.setOpaque(false);
+        battleDuration.setMinimum(1);
+        battleDuration.setMaximum(20);
+        battleDuration.setValue(App.getBattleDuration());
+        
         this.fightingSquare.setIcon(imgIcon2);
         this.fightingSquare.setText("");
-
+        
     }
 
     /**
@@ -62,25 +63,17 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSlider1 = new javax.swing.JSlider();
-        AvatarCharacterID = new javax.swing.JLabel();
-        RegularShowCharacterID1 = new javax.swing.JLabel();
-        AvatarActualHP = new javax.swing.JLabel();
-        RegularShowActualHP = new javax.swing.JLabel();
-        Winner = new javax.swing.JLabel();
-        RegularShowActualStatus = new javax.swing.JLabel();
-        AvatarActualStatus = new javax.swing.JLabel();
-        FightingTitle = new javax.swing.JLabel();
-        RegularShowCard = new javax.swing.JLabel();
-        AvatarCard = new javax.swing.JLabel();
-        fightingSquare = new javax.swing.JLabel();
-        fightingTitle4 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        battleDuration = new javax.swing.JSlider();
+        WinnerLabelID = new javax.swing.JLabel();
         tvPanelUI1 = new GUIClasses.TvPanelUI();
+        FightingTitle = new javax.swing.JLabel();
         tvPanelUI2 = new GUIClasses.TvPanelUI();
+        avatarFighter = new GUIClasses.FighterUI();
+        regularShowFighter = new GUIClasses.FighterUI();
+        iaStatusLabel = new javax.swing.JLabel();
+        Winner1 = new javax.swing.JLabel();
+        roundLabel = new javax.swing.JLabel();
+        fightingSquare = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -91,87 +84,66 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(1130, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSlider1.setMaximum(5000);
-        jSlider1.setMinimum(300);
-        jSlider1.setValue(3333);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        battleDuration.setForeground(new java.awt.Color(255, 255, 255));
+        battleDuration.setMajorTickSpacing(9);
+        battleDuration.setMaximum(20);
+        battleDuration.setMinimum(1);
+        battleDuration.setMinorTickSpacing(1);
+        battleDuration.setPaintLabels(true);
+        battleDuration.setPaintTicks(true);
+        battleDuration.setValue(10);
+        battleDuration.setOpaque(true);
+        battleDuration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                battleDurationStateChanged(evt);
             }
         });
-        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+        battleDuration.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jSlider1MouseClicked(evt);
+                battleDurationMouseClicked(evt);
             }
         });
-        jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+        jPanel1.add(battleDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
 
-        AvatarCharacterID.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        AvatarCharacterID.setForeground(new java.awt.Color(255, 255, 255));
-        AvatarCharacterID.setText("PersonajeID:");
-        jPanel1.add(AvatarCharacterID, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
-
-        RegularShowCharacterID1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        RegularShowCharacterID1.setForeground(new java.awt.Color(255, 255, 255));
-        RegularShowCharacterID1.setText("PersonajeID:");
-        jPanel1.add(RegularShowCharacterID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
-
-        AvatarActualHP.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        AvatarActualHP.setForeground(new java.awt.Color(255, 255, 255));
-        AvatarActualHP.setText("HP actual:");
-        jPanel1.add(AvatarActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
-
-        RegularShowActualHP.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        RegularShowActualHP.setForeground(new java.awt.Color(255, 255, 255));
-        RegularShowActualHP.setText("HP actual:");
-        jPanel1.add(RegularShowActualHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
-
-        Winner.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        Winner.setForeground(new java.awt.Color(255, 255, 255));
-        Winner.setText("Ganador");
-        jPanel1.add(Winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 630, -1, -1));
-
-        RegularShowActualStatus.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        RegularShowActualStatus.setForeground(new java.awt.Color(255, 255, 255));
-        RegularShowActualStatus.setText("Estado actual:");
-        jPanel1.add(RegularShowActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 540, -1, -1));
-
-        AvatarActualStatus.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        AvatarActualStatus.setForeground(new java.awt.Color(255, 255, 255));
-        AvatarActualStatus.setText("Estado actual:");
-        jPanel1.add(AvatarActualStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
+        WinnerLabelID.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        WinnerLabelID.setForeground(new java.awt.Color(255, 255, 255));
+        WinnerLabelID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        WinnerLabelID.setText("Ganador");
+        jPanel1.add(WinnerLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 370, -1));
+        jPanel1.add(tvPanelUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FightingTitle.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
         FightingTitle.setForeground(new java.awt.Color(255, 255, 255));
+        FightingTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         FightingTitle.setText("FIGHTING AREA");
-        jPanel1.add(FightingTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
-        jPanel1.add(RegularShowCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
-        jPanel1.add(AvatarCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, -1));
+        jPanel1.add(FightingTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 10, 390, -1));
+        jPanel1.add(tvPanelUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
+        jPanel1.add(avatarFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, 460));
+        jPanel1.add(regularShowFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, 460));
+
+        iaStatusLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        iaStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
+        iaStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iaStatusLabel.setText("IA STATUS LABEL");
+        jPanel1.add(iaStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 320, -1));
+
+        Winner1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        Winner1.setForeground(new java.awt.Color(255, 255, 255));
+        Winner1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Winner1.setText("Ganador:");
+        jPanel1.add(Winner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 370, -1));
+
+        roundLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        roundLabel.setForeground(new java.awt.Color(255, 255, 255));
+        roundLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        roundLabel.setText("Round: 0");
+        jPanel1.add(roundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 320, -1));
 
         fightingSquare.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fightingSquare.setForeground(new java.awt.Color(0, 0, 0));
         fightingSquare.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fightingSquare.setText("FIGHTING AREA backgound");
-        jPanel1.add(fightingSquare, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 390, 690));
-
-        fightingTitle4.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        fightingTitle4.setForeground(new java.awt.Color(255, 255, 255));
-        fightingTitle4.setText("PersonajeID:");
-        jPanel1.add(fightingTitle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
-
-        jLabel21.setText("jLabel21");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
-
-        jLabel22.setText("jLabel21");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, -1, -1));
-
-        jLabel23.setText("jLabel21");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
-
-        jLabel24.setText("jLabel21");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, -1, -1));
-        jPanel1.add(tvPanelUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        jPanel1.add(tvPanelUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
+        jPanel1.add(fightingSquare, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -80, 390, 830));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,21 +153,21 @@ public class Home extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSlider1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseClicked
+    private void battleDurationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_battleDurationMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jSlider1MouseClicked
+    }//GEN-LAST:event_battleDurationMouseClicked
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+    private void battleDurationStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_battleDurationStateChanged
         // TODO add your handling code here:
-        int newSpeed = jSlider1.getValue();
+        int newSpeed = getBattleDuration().getValue();
 //        app.getIaArena().setCombatSpeed(newSpeed);
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_battleDurationStateChanged
 
     /**
      * @param args the command line arguments
@@ -234,24 +206,16 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AvatarActualHP;
-    private javax.swing.JLabel AvatarActualStatus;
-    private javax.swing.JLabel AvatarCard;
-    private javax.swing.JLabel AvatarCharacterID;
     private javax.swing.JLabel FightingTitle;
-    private javax.swing.JLabel RegularShowActualHP;
-    private javax.swing.JLabel RegularShowActualStatus;
-    private javax.swing.JLabel RegularShowCard;
-    private javax.swing.JLabel RegularShowCharacterID1;
-    private javax.swing.JLabel Winner;
+    private javax.swing.JLabel Winner1;
+    private javax.swing.JLabel WinnerLabelID;
+    private GUIClasses.FighterUI avatarFighter;
+    private javax.swing.JSlider battleDuration;
     private javax.swing.JLabel fightingSquare;
-    private javax.swing.JLabel fightingTitle4;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel iaStatusLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSlider jSlider1;
+    private GUIClasses.FighterUI regularShowFighter;
+    private javax.swing.JLabel roundLabel;
     private GUIClasses.TvPanelUI tvPanelUI1;
     private GUIClasses.TvPanelUI tvPanelUI2;
     // End of variables declaration//GEN-END:variables
@@ -269,5 +233,46 @@ public class Home extends javax.swing.JFrame {
     public GUIClasses.TvPanelUI getTvPanelUI2() {
         return tvPanelUI2;
     }
-    
+
+    /**
+     * @return the avatarFighter
+     */
+    public GUIClasses.FighterUI getAvatarFighter() {
+        return avatarFighter;
+    }
+
+    /**
+     * @return the regularShowFighter
+     */
+    public GUIClasses.FighterUI getRegularShowFighter() {
+        return regularShowFighter;
+    }
+
+    /**
+     * @return the iaStatusLabel
+     */
+    public javax.swing.JLabel getIaStatusLabel() {
+        return iaStatusLabel;
+    }
+
+    /**
+     * @return the WinnerLabelID
+     */
+    public javax.swing.JLabel getWinnerLabelID() {
+        return WinnerLabelID;
+    }
+
+    /**
+     * @return the roundLabel
+     */
+    public javax.swing.JLabel getRoundLabel() {
+        return roundLabel;
+    }
+
+    /**
+     * @return the battleDuration
+     */
+    public javax.swing.JSlider getBattleDuration() {
+        return battleDuration;
+    }
 }

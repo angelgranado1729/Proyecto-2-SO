@@ -19,6 +19,17 @@ public class TvPanelUI extends javax.swing.JPanel {
      */
     public TvPanelUI() {
         initComponents();
+        this.getQueueUI1().getTitleQueueUI().setText("COLA DE PRIORIDAD: 1");
+        this.getQueueUI2().getTitleQueueUI().setText("COLA DE PRIORIDAD: 2");
+        this.getQueueUI3().getTitleQueueUI().setText("COLA DE PRIORIDAD: 3");
+        this.getQueueUI4().getTitleQueueUI().setText("COLA DE REFUERZOS");
+    }
+
+    public void updateUIQueue(Queue queue1, Queue queue2, Queue queue3, Queue queue4) {
+        this.queueUI1.updateQueueUI(queue1);
+        this.queueUI2.updateQueueUI(queue2);
+        this.queueUI3.updateQueueUI(queue3);
+        this.queueUI4.updateQueueUI(queue4);
     }
 
     /**
@@ -37,6 +48,8 @@ public class TvPanelUI extends javax.swing.JPanel {
         queueUI3 = new GUIClasses.QueueUI();
         logo = new javax.swing.JLabel();
         queueUI4 = new GUIClasses.QueueUI();
+        victoriesLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         cartoonNetworkLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartoonNetworkLogo.setText("cartoonNetworkLogo");
@@ -52,8 +65,20 @@ public class TvPanelUI extends javax.swing.JPanel {
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setText("TVLogo");
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 90));
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 100));
         jPanel1.add(queueUI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
+
+        victoriesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        victoriesLabel.setForeground(new java.awt.Color(0, 0, 0));
+        victoriesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        victoriesLabel.setText("0");
+        jPanel1.add(victoriesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 150, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Triunfos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 150, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 740));
     }// </editor-fold>//GEN-END:initComponents
@@ -61,12 +86,14 @@ public class TvPanelUI extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cartoonNetworkLogo;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logo;
     private GUIClasses.QueueUI queueUI1;
     private GUIClasses.QueueUI queueUI2;
     private GUIClasses.QueueUI queueUI3;
     private GUIClasses.QueueUI queueUI4;
+    private javax.swing.JLabel victoriesLabel;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLogo() {
@@ -89,12 +116,11 @@ public class TvPanelUI extends javax.swing.JPanel {
         return this.queueUI4;
     }
 
-    public void updateUIQueue(Queue queue1, Queue queue2, Queue queue3, Queue queue4) {
-        this.queueUI1.updateQueueUI(queue1);
-        this.queueUI2.updateQueueUI(queue2);
-        this.queueUI3.updateQueueUI(queue3);
-        this.queueUI4.updateQueueUI(queue4);
-
+    /**
+     * @return the victoriesLabel
+     */
+    public javax.swing.JLabel getVictoriesLabel() {
+        return victoriesLabel;
     }
 
 }

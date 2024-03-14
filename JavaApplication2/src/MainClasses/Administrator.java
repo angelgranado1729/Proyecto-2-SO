@@ -5,7 +5,9 @@
 package MainClasses;
 
 import EDD.LinkedList;
+import EDD.Queue;
 import GUIClasses.ControlMainUI;
+import MainPackage.App;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,13 +18,16 @@ import java.util.logging.Logger;
  */
 public class Administrator extends Thread {
 
+    private IA ia;
     private final Semaphore mutex;
     private final TelevisionShow regularShow;
     private final TelevisionShow avatar;
     private int numRound = 0;
 
-    public Administrator(Semaphore mutex, LinkedList yellowCards1, LinkedList greenCards1, LinkedList redCards1,
+    public Administrator(IA ia, Semaphore mutex, LinkedList yellowCards1, LinkedList greenCards1, LinkedList redCards1,
             LinkedList yellowCards2, LinkedList greenCards2, LinkedList redCards2) {
+
+        this.ia = ia;
         this.mutex = mutex;
         this.regularShow = new TelevisionShow("RegularShow", "/GUI/Assets/RegularShow",
                 yellowCards1, greenCards1, redCards1);
@@ -31,6 +36,7 @@ public class Administrator extends Thread {
     }
 
     public void startSimulation() {
+//        ControlMainUI.getHome().setVisible(true);
 
         for (int i = 0; i < 20; i++) {
             getRegularShow().createCharacter();
@@ -58,12 +64,16 @@ public class Administrator extends Thread {
         }
 
         this.start();
+        this.getIa().start();
     }
 
     @Override
     public void run() {
         while (true) {
             try {
+                int battleDuration = ControlMainUI.getHome().getBattleDuration().getValue();
+                ia.setTime(battleDuration);
+
                 updateReinforcementQueue(this.regularShow);
                 updateReinforcementQueue(this.avatar);
 
@@ -79,17 +89,19 @@ public class Administrator extends Thread {
                 //TODO: Pasarle los fighters a la IA
                 // Aca 0j0
                 //------------------
-                
-                
+                this.getIa().setRegularShowFighter(regularShowFighter);
+                this.getIa().setAvatarFighter(avatarFighter);
+
                 updateUIqueue();
                 mutex.release();
-                Thread.sleep(500);
+                Thread.sleep(100);
                 mutex.acquire();
 
+                this.numRound += 1;
+                
                 risePriorities(this.getRegularShow());
                 risePriorities(this.getAvatar());
 
-                this.numRound += 1;
                 updateUIqueue();
 
             } catch (InterruptedException ex) {
@@ -100,19 +112,37 @@ public class Administrator extends Thread {
     }
 
     private void risePriorities(TelevisionShow tvShow) {
+        riseQueue(tvShow.getQueue2(), tvShow.getQueue1());
+        riseQueue(tvShow.getQueue3(), tvShow.getQueue2());
+    }
 
+    private void riseQueue(Queue currentLevel, Queue nextLevel) {
+        int len = currentLevel.getLength();
+
+        for (int i = 0; i < len; i++) {
+            CharacterTv character = currentLevel.dequeue();
+            character.setCounter(character.getCounter() + 1);
+
+            if (character.getCounter() >= 8) {
+                character.setCounter(0);
+                nextLevel.enqueue(character);
+            } else {
+                currentLevel.enqueue(character);
+            }
+        }
     }
 
     private CharacterTv chooseFighters(TelevisionShow tvShow) {
         if (tvShow.getQueue1().isEmpty()) {
             tvShow.updateQueue1();
+            this.updateUIqueue();
         }
         CharacterTv fighter = tvShow.getQueue1().dequeue();
         fighter.setCounter(0);
         return fighter;
     }
 
-    private void updateUIqueue() {
+    public void updateUIqueue() {
         ControlMainUI.updateUIQueue("regularshow",
                 this.getRegularShow().getQueue1(),
                 this.getRegularShow().getQueue2(),
@@ -140,7 +170,7 @@ public class Administrator extends Thread {
     private void tryCreateCharacters() {
         double randomNum = Math.random();
 
-        if (randomNum <= 0.8) {
+        if (randomNum <= 1) {
             getRegularShow().createCharacter();
             getAvatar().createCharacter();
         }
@@ -158,6 +188,20 @@ public class Administrator extends Thread {
      */
     public TelevisionShow getAvatar() {
         return avatar;
+    }
+
+    /**
+     * @return the ia
+     */
+    public IA getIa() {
+        return ia;
+    }
+
+    /**
+     * @param ia the ia to set
+     */
+    public void setIa(IA ia) {
+        this.ia = ia;
     }
 
 }

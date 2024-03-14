@@ -131,4 +131,11 @@ public class QueueUI extends javax.swing.JPanel {
         return queuePanel;
     }
 
+    /**
+     * @return the titleQueueUI
+     */
+    public javax.swing.JLabel getTitleQueueUI() {
+        return titleQueueUI;
+    }
+
 }
