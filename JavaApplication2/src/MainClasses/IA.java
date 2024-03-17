@@ -142,6 +142,22 @@ public class IA extends Thread {
 
             if (combatEnd) break; // Salir del bucle si el combate terminó.
         }
+        
+        if (!combatEnd) {
+        // Aquí se decide el ganador basado en quién tiene más HP.
+            if (regularShowFighter.getHitPoints() > avatarFighter.getHitPoints()) {
+                this.victoriesRegularShow++;
+                ControlMainUI.getHome().getTvPanelUI1().getVictoriesLabel().setText(String.valueOf(this.victoriesRegularShow));
+                return regularShowFighter;
+            } else if (regularShowFighter.getHitPoints() < avatarFighter.getHitPoints()) {
+                this.victoriesAvatar++;
+                ControlMainUI.getHome().getTvPanelUI2().getVictoriesLabel().setText(String.valueOf(this.victoriesAvatar));
+                return avatarFighter;
+            } else {
+                // En caso de empate por HP
+                return avatarFighter;
+            }
+        }
 
         // Determinar ganador basado en HP restante.
         if (regularShowFighter.getHitPoints() > 0) {
@@ -174,7 +190,7 @@ public class IA extends Thread {
                  // RECUPERA EN VIDA LA MITAD DE LO QUE LO ATACARÍA 
                  int healAmount = baseDamage / 2;
                  attacker.heal(healAmount);
-                 damage = 0; // NO ENVIARÍA DAÑO EN ESE CASO!!
+                 damage = (attacker.getSpeedVelocity() + (attacker.getAgility() / 2)) / 4;
                  break;
              case "Parálisis":
                  // Se le disminuye la agilidad al enemigo en un 50%
