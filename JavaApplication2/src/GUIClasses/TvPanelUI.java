@@ -56,7 +56,7 @@ public class TvPanelUI extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(240, 233, 223));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(queueUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
@@ -68,16 +68,16 @@ public class TvPanelUI extends javax.swing.JPanel {
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 100));
         jPanel1.add(queueUI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
 
-        victoriesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        victoriesLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         victoriesLabel.setForeground(new java.awt.Color(0, 0, 0));
         victoriesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         victoriesLabel.setText("0");
         jPanel1.add(victoriesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 150, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Triunfos");
+        jLabel2.setText("VICTORIAS");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 150, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 740));

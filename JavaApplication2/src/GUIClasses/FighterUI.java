@@ -24,7 +24,7 @@ public class FighterUI extends javax.swing.JPanel {
         this.FighterCard.setIcon(null);
         this.characterIDLabel.setText("");
         this.HPLabel.setText("");
-        this.StatusLabel.setText("");
+        this.StatusLabel.setText("Pendiente");
     }
 
     /**
@@ -50,34 +50,37 @@ public class FighterUI extends javax.swing.JPanel {
         FighterCard.setText("FighterCard");
         add(FighterCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 220));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HP Actual");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 160, 40));
 
+        StatusLabel.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         StatusLabel.setForeground(new java.awt.Color(255, 255, 255));
         StatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StatusLabel.setText("jLabel2");
+        StatusLabel.setText("Pendiente");
         add(StatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 160, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Estado Actual");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 160, 40));
 
+        characterIDLabel.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         characterIDLabel.setForeground(new java.awt.Color(255, 255, 255));
         characterIDLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         characterIDLabel.setText("jLabel2");
         add(characterIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 160, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("PersonajeID");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 40));
 
+        HPLabel.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         HPLabel.setForeground(new java.awt.Color(255, 255, 255));
         HPLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         HPLabel.setText("jLabel2");

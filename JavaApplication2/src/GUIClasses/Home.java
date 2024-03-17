@@ -4,6 +4,7 @@
  */
 package GUIClasses;
 
+import Helpers.AudioManager;
 import Helpers.ImageUtils;
 import MainPackage.App;
 import javax.swing.ImageIcon;
@@ -16,6 +17,7 @@ import javax.swing.JSlider;
 public class Home extends javax.swing.JFrame {
     
     private ImageUtils imageUtils = new ImageUtils();
+    private AudioManager audioManager;
     App app = App.getInstance();
 
     /**
@@ -26,9 +28,12 @@ public class Home extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
-        ImageIcon imgIcon2 = imageUtils.loadScaledImage("/GUI/Assets/fightingSquare.png", 460, 850);
+        //Seteo del audioManager
+        this.audioManager = new AudioManager(); 
+        audioManager.playMusic("/GUI/Assets/backgroundSound.wav");
+        
         ImageIcon cartoonNetworkLogo = imageUtils.loadScaledImage("/GUI/Assets/RegularShow/logo.png", 140, 80);
-        ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/Avatar/logo.png", 140, 80);
+        ImageIcon nickelodeonLogo = imageUtils.loadScaledImage("/GUI/Assets/Avatar/logo.png", 120, 80);
         
         tvPanelUI1.getLogo().setIcon(cartoonNetworkLogo);
         tvPanelUI2.getLogo().setIcon(nickelodeonLogo);
@@ -48,9 +53,6 @@ public class Home extends javax.swing.JFrame {
         battleDuration.setMaximum(20);
         battleDuration.setValue(App.getBattleDuration());
         
-        this.fightingSquare.setIcon(imgIcon2);
-        this.fightingSquare.setText("");
-        
     }
 
     /**
@@ -63,17 +65,18 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        battleDuration = new javax.swing.JSlider();
-        WinnerLabelID = new javax.swing.JLabel();
         tvPanelUI1 = new GUIClasses.TvPanelUI();
         FightingTitle = new javax.swing.JLabel();
         tvPanelUI2 = new GUIClasses.TvPanelUI();
         avatarFighter = new GUIClasses.FighterUI();
         regularShowFighter = new GUIClasses.FighterUI();
-        iaStatusLabel = new javax.swing.JLabel();
         Winner1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         roundLabel = new javax.swing.JLabel();
-        fightingSquare = new javax.swing.JLabel();
+        iaStatusLabel = new javax.swing.JLabel();
+        battleDuration = new javax.swing.JSlider();
+        clockVelocity = new javax.swing.JLabel();
+        WinnerLabelID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -83,6 +86,36 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(240, 233, 223));
         jPanel1.setMinimumSize(new java.awt.Dimension(1130, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(tvPanelUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FightingTitle.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
+        FightingTitle.setForeground(new java.awt.Color(255, 255, 255));
+        FightingTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FightingTitle.setText("FIGHTING AREA");
+        jPanel1.add(FightingTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 10, 390, -1));
+        jPanel1.add(tvPanelUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
+        jPanel1.add(avatarFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, 460));
+        jPanel1.add(regularShowFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, 460));
+
+        Winner1.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        Winner1.setForeground(new java.awt.Color(255, 255, 255));
+        Winner1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Winner1.setText("Ganador:");
+        jPanel1.add(Winner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 370, -1));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(51, 51, 51));
+
+        roundLabel.setFont(new java.awt.Font("Montserrat", 1, 18)); // NOI18N
+        roundLabel.setForeground(new java.awt.Color(255, 255, 255));
+        roundLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        roundLabel.setText("Round: 0");
+
+        iaStatusLabel.setFont(new java.awt.Font("Montserrat", 1, 17)); // NOI18N
+        iaStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
+        iaStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iaStatusLabel.setText("IA STATUS LABEL");
+        iaStatusLabel.setToolTipText("");
 
         battleDuration.setForeground(new java.awt.Color(255, 255, 255));
         battleDuration.setMajorTickSpacing(9);
@@ -91,6 +124,7 @@ public class Home extends javax.swing.JFrame {
         battleDuration.setMinorTickSpacing(1);
         battleDuration.setPaintLabels(true);
         battleDuration.setPaintTicks(true);
+        battleDuration.setToolTipText("Slider de Velocidad");
         battleDuration.setValue(10);
         battleDuration.setOpaque(true);
         battleDuration.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -103,47 +137,58 @@ public class Home extends javax.swing.JFrame {
                 battleDurationMouseClicked(evt);
             }
         });
-        jPanel1.add(battleDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
+
+        clockVelocity.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
+        clockVelocity.setForeground(new java.awt.Color(255, 255, 255));
+        clockVelocity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        clockVelocity.setText("AJUSTE LA VELOCIDAD ");
 
         WinnerLabelID.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         WinnerLabelID.setForeground(new java.awt.Color(255, 255, 255));
         WinnerLabelID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         WinnerLabelID.setText("Ganador");
-        jPanel1.add(WinnerLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 370, -1));
-        jPanel1.add(tvPanelUI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        FightingTitle.setFont(new java.awt.Font("Montserrat", 1, 36)); // NOI18N
-        FightingTitle.setForeground(new java.awt.Color(255, 255, 255));
-        FightingTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FightingTitle.setText("FIGHTING AREA");
-        jPanel1.add(FightingTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 10, 390, -1));
-        jPanel1.add(tvPanelUI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
-        jPanel1.add(avatarFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, 460));
-        jPanel1.add(regularShowFighter, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, 460));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(battleDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(iaStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(clockVelocity, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(roundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(WinnerLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(clockVelocity)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(battleDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iaStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(roundLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 461, Short.MAX_VALUE)
+                .addComponent(WinnerLabelID)
+                .addGap(53, 53, 53))
+        );
 
-        iaStatusLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        iaStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
-        iaStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iaStatusLabel.setText("IA STATUS LABEL");
-        jPanel1.add(iaStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 320, -1));
-
-        Winner1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        Winner1.setForeground(new java.awt.Color(255, 255, 255));
-        Winner1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Winner1.setText("Ganador:");
-        jPanel1.add(Winner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 630, 370, -1));
-
-        roundLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        roundLabel.setForeground(new java.awt.Color(255, 255, 255));
-        roundLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roundLabel.setText("Round: 0");
-        jPanel1.add(roundLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 320, -1));
-
-        fightingSquare.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fightingSquare.setForeground(new java.awt.Color(0, 0, 0));
-        fightingSquare.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fightingSquare.setText("FIGHTING AREA backgound");
-        jPanel1.add(fightingSquare, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -80, 390, 830));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 400, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,9 +256,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel WinnerLabelID;
     private GUIClasses.FighterUI avatarFighter;
     private javax.swing.JSlider battleDuration;
-    private javax.swing.JLabel fightingSquare;
+    private javax.swing.JLabel clockVelocity;
     private javax.swing.JLabel iaStatusLabel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private GUIClasses.FighterUI regularShowFighter;
     private javax.swing.JLabel roundLabel;
     private GUIClasses.TvPanelUI tvPanelUI1;

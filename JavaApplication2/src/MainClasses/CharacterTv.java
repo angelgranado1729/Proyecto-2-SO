@@ -19,6 +19,7 @@ public class CharacterTv {
     private int priorityLevel;
     private String urlSource;
     private int counter = 0;
+    private String status = "";
 
     public CharacterTv(
             String characterId,

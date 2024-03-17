@@ -163,6 +163,9 @@ public class Administrator extends Thread {
                 CharacterTv character = tvShow.getQueue4().dequeue();
                 character.setCounter(0);
                 tvShow.getQueue1().enqueue(character);
+            }else {
+            CharacterTv character = tvShow.getQueue4().dequeue();
+            tvShow.getQueue4().enqueue(character);
             }
         }
     }
@@ -170,7 +173,7 @@ public class Administrator extends Thread {
     private void tryCreateCharacters() {
         double randomNum = Math.random();
 
-        if (randomNum <= 1) {
+        if (randomNum <= 0.8) {
             getRegularShow().createCharacter();
             getAvatar().createCharacter();
         }

@@ -45,8 +45,8 @@ public class FileFunctions {
                                 parts[4],
                                 parts[5].split(";")[0]
                         );
-
-                        // Clasificar el personaje en el array correspondiente
+ 
+                        // Clasificar el personaje en la linkedList correspondiente
                         if (line.contains("yellow.png") && "Regular Show".equals(currentShow)) {
                             character.setPriorityLevel(1);
                             this.getYellowRegularShow().addEnd(character);

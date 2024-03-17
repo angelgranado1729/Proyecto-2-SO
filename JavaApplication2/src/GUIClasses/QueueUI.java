@@ -86,7 +86,7 @@ public class QueueUI extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backgroundQueue.setBackground(new java.awt.Color(240, 233, 223));
+        backgroundQueue.setBackground(new java.awt.Color(204, 204, 204));
         backgroundQueue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleQueueUI.setFont(new java.awt.Font("Montserrat", 1, 16)); // NOI18N
@@ -95,17 +95,17 @@ public class QueueUI extends javax.swing.JPanel {
         titleQueueUI.setText("COLA PRIORIDAD:");
         backgroundQueue.add(titleQueueUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, -1));
 
-        jScrollPaneQueue.setBackground(new java.awt.Color(240, 233, 223));
-        jScrollPaneQueue.setForeground(new java.awt.Color(240, 233, 223));
+        jScrollPaneQueue.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPaneQueue.setForeground(new java.awt.Color(204, 204, 204));
         backgroundQueue.add(jScrollPaneQueue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 333, 105));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Tope de la cola");
         backgroundQueue.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 112, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Final de la cola");
